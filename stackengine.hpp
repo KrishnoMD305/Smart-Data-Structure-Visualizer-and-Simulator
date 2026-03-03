@@ -1,5 +1,6 @@
 #pragma once
 #include<vector> // for storing stack
+#include<stdexcept> // exception handling
 
 template<typename T>
 class MyStack{
@@ -15,5 +16,13 @@ public:
         return data.empty();
     }
 
-    
+    void pop(){
+        is(isempty()){
+            throw std::underflow_error("Stack Underflow! Can't pop from empty stack.");
+
+        }
+        data.pop_back();
+    }
+
+
 };
