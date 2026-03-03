@@ -1,7 +1,7 @@
 #pragma once
 #include<vector> // for storing stack
 #include<stdexcept> // exception handling
-
+#include<string>
 template<typename T>
 class MyStack{
 private:
@@ -9,7 +9,7 @@ private:
 
 public:
     enum{
-        MAX_LEN = 10;
+        MAX_LEN = 10
     };
 
     void push(const T& val){
@@ -46,7 +46,7 @@ public:
         data.clear();
     }
 
-    
+    friend class VisuStack;
 
 };
 
@@ -55,5 +55,7 @@ class VisuStack{
 private:
     MyStack<int> myData;
 public:
-    
+    VisuStack(MyStack<int> st);
+    std::string stackcont(std::string str);
+    void visualize();
 };
