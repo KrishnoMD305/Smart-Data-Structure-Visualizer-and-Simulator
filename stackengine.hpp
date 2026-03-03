@@ -17,7 +17,7 @@ public:
     }
 
     void pop(){
-        is(isempty()){
+        if(isempty()){
             throw std::underflow_error("Stack Underflow! Can't pop from empty stack.");
 
         }
@@ -25,6 +25,9 @@ public:
     }
 
     T top(){
+        if(isempty()){
+            throw std::underflow_error("Empty Stack! No element available.");
+        }
         return data.back();
     }
 
