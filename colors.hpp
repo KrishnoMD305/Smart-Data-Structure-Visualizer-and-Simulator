@@ -10,4 +10,5 @@ namespace Color{
     const std::string MAGENTA = "\033[35m";
     const std::string CYAN = "\033[36m";
     const std::string WHITE = "\033[37m";
+    const std::string BGREEN   = "\033[92m";
 }

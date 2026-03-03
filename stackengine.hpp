@@ -3,7 +3,7 @@
 #include<stdexcept> // exception handling
 #include<string>
 #include<iostream>
-#include "colors.hpp"
+#include "colors.hpp" // color
 template<typename T>
 class MyStack{
 private:
@@ -15,7 +15,7 @@ public:
     };
 
     void push(const T& val){
-        if(data.size() > MAX_LEN){
+        if(data.size() >= MAX_LEN){
             throw std::overflow_error(Color::RED+std::string("Stack Overflow! Can't push more. ")+Color::RESET);
         }
         data.push_back(val);
@@ -53,8 +53,9 @@ public:
             if(data[i]==val){
                 return i;
             }
-            return -1;
+            
         }
+        return -1;
     }
 
     friend class VisuStack;
@@ -120,6 +121,36 @@ public:
     }
 
     void show_cmd(){
-
+        std::cout<<Color::MAGENTA<<"push[1 value]   pop[2]   top[3]  len[4]\n"<<Color::RESET;
+        std::cout<<Color::MAGENTA<<"isempty[5]    search[6 value]   Exit[7]\n"<<Color::RESET;
+        std::cout<<Color::MAGENTA<<"Show history[8]\n"<<Color::RESET;
     }
+
+    void stackvisu(){
+        std::cout<<Color::RED<<" --------------------------------"<<Color::RESET<<"\n";
+        std::cout<<Color::RED<<"|                                |"<<Color::RESET<<"\n";
+        std::cout<<Color::RED<<"| "<<Color::BGREEN<<"Stack Visualizer and Simulator"<<Color::RED<<" |"<<Color::RESET<<"\n";
+        std::cout<<Color::RED<<"|                                |"<<Color::RESET<<"\n";
+        std::cout<<Color::RED<<" --------------------------------"<<Color::RESET<<"\n";
+    }
+};
+
+
+class Operation{
+public:
+    int opType;
+    std::string opmsg;
+};
+
+
+class StackMenu{
+public:
+    MyStack<int> myst;
+    std::vector<Operation> opHistory;
+    msgs text;
+    VisuStack mys;
+
+    StackMenu(): mys(myst) {}
+
+
 };
