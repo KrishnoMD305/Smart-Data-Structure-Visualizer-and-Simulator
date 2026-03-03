@@ -49,3 +49,11 @@ public:
     
 
 };
+
+
+class VisuStack{
+private:
+    MyStack<int> myData;
+public:
+    
+};
