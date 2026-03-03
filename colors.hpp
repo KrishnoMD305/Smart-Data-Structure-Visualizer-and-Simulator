@@ -11,4 +11,6 @@ namespace Color{
     const std::string CYAN = "\033[36m";
     const std::string WHITE = "\033[37m";
     const std::string BGREEN   = "\033[92m";
+    const std::string BRED     = "\033[91m";
+    const std::string BBLUE    = "\033[94m";
 }

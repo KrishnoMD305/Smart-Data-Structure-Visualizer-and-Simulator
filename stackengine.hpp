@@ -186,6 +186,51 @@ public:
                 opi.opType = 2;
                 opi.opmsg = "Poped last element: " + std::to_string(topval);
                 opHistory.push_back(opi);
+            }else if(choice==3){
+                std::cout<<"\n";
+                std::cout<<"Top Element: "<<myst.top()<<"\n";
+                Operation opi;
+                opi.opType = 3;
+                opi.opmsg = "Requested top element.";
+                opHistory.push_back(opi);
+            }else if(choice==4){
+                std::cout<<"\n";
+                std::cout<<"Length of the stack: "<<myst.len()<<"\n";
+                Operation opi;
+                opi.opType = 4;
+                opi.opmsg = "Requested size of the stack.";
+                opHistory.push_back(opi);
+            }else if(choice==5){
+                std::cout<<"\n";
+                if(myst.isempty()){
+                    std::cout<<"Stack is Empty\n";
+                }else{
+                    std::cout<<"Not Empty.\n";
+                }
+
+                Operation opi;
+                opi.opType = 5;
+                opi.opmsg = "Requested emptiness of the stack.";
+                opHistory.push_back(opi);
+
+            }else if(choice==6){
+                int target; std::cin>>target;
+                std::cout<<"\nSearching Element..";
+                Operation opi;
+                opi.opType = 6;
+                int index = myst.search_el(target);
+                if(index==-1){
+                    std::cout<<Color::BRED<<"Not Found!"<<Color::RESET<<"\n";
+                    opi.opmsg = "Requested searching for a element in stack. Not fount";
+                }else{
+                    std::cout<<Color::BGREEN<<"Found the element at the index "<<Color::RESET;
+                    std::cout<<index<<"\n";
+                    opi.opmsg = "Requested searching for a element in stack. Found at the index " + std::to_string(index);
+                }
+                opHistory.push_back(opi);
+            }else if(choice==8){
+                std::cout<<"\n\n";
+                std::cout<<Color
             }
 
         }
