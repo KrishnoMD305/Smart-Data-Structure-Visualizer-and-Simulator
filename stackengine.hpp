@@ -230,7 +230,25 @@ public:
                 opHistory.push_back(opi);
             }else if(choice==8){
                 std::cout<<"\n\n";
-                std::cout<<Color
+                std::cout<<Color::BBLUE<<"Stack Operation History :- \n\n"<<Color::RESET;
+                std::cout<<"Operation performed  |  Message\n";
+                for(auto op : opHistory){
+                    if(op.opType==1){
+                        std::cout<<"Push                 | ";
+                    }else if(op.opType==2){
+                        std::cout<<"Pop                  | ";
+                    }else if(op.opType==3){
+                        std::cout<<"Top                  | ";
+                    }else if(op.opType==4){
+                        std::cout<<"Len                  | ";
+                    }else if(op.opType==5){
+                        std::cout<<"IsEmpty              | ";
+                    }else if(op.opType==6){
+                        std::cout<<"Search               | ";
+                    }
+
+                    std::cout<<op.opmsg<<"\n";
+                }
             }
 
         }
