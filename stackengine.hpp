@@ -24,5 +24,17 @@ public:
         data.pop_back();
     }
 
+    T top(){
+        return data.back();
+    }
+
+    int len(){
+        return data.size();
+    }
+
+    void clear(){
+        data.clear();
+    }
+
 
 };
