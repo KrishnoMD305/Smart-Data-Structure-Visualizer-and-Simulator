@@ -3,6 +3,7 @@
 #include<stdexcept> // exception handling
 #include<string>
 #include<iostream>
+#include "colors.hpp"
 template<typename T>
 class MyStack{
 private:
@@ -15,7 +16,7 @@ public:
 
     void push(const T& val){
         if(data.size() > MAX_LEN){
-            throw std::overflow_error("Stack Overflow! Can't push more. ");
+            throw std::overflow_error(Color::RED+std::string("Stack Overflow! Can't push more. ")+Color::RESET);
         }
         data.push_back(val);
     }
@@ -26,7 +27,7 @@ public:
 
     void pop(){
         if(isempty()){
-            throw std::underflow_error("Stack Underflow! Can't pop from empty stack.");
+            throw std::underflow_error(Color::RED+std::string("Stack Underflow! Can't pop from empty stack.")+Color::RESET);
 
         }
         data.pop_back();
@@ -34,7 +35,7 @@ public:
 
     T top(){
         if(isempty()){
-            throw std::underflow_error("Empty Stack! No element available.");
+            throw std::underflow_error(Color::RED+std::string("Empty Stack! No element available.")+Color::RESET);
         }
         return data.back();
     }
@@ -113,12 +114,12 @@ public:
 class msgs{
 public:
     void showCmplxytbl(){
-        std::cout<<"push    O(1)   |    len    O(1)\n";
-        std::cout<<"pop     O(1)   |  isempty  O(1)\n";
-        std::cout<<"top     O(1)   |   search  O(n)\n";
+        std::cout<<Color::BLUE<<"push    O(1)   |    len    O(1)\n"<<Color::RESET;
+        std::cout<<Color::BLUE<<"pop     O(1)   |  isempty  O(1)\n"<<Color::RESET;
+        std::cout<<Color::BLUE<<"top     O(1)   |   search  O(n)\n"<<Color::RESET;
     }
 
     void show_cmd(){
-        
+
     }
 };
