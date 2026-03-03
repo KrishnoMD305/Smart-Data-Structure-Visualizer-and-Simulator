@@ -168,8 +168,13 @@ public:
             std::cin>>choice;
 
             if(choice==1){
+                
                 int val; 
                 std::cin>>val;
+                if(myst.len()==myst.MAX_LEN){
+                    std::cout<<Color::RED<<"Stack is Full!. Push element is not possible \n"<<Color::RESET;
+                    continue;
+                }
                 myst.push(val);
                 std::cout<<"\n";
                 std::cout<<Color::GREEN<<"Successfully pushed value\n"<<Color::RESET;
@@ -178,6 +183,10 @@ public:
                 opi.opmsg = "Pushed element " + std::to_string(val);
                 opHistory.push_back(opi);
             }else if(choice==2){
+                if(myst.isempty()){
+                    std::cout<<Color::RED<<"Stack is already empty. Pop is not possible \n"<<Color::RESET;
+                    continue;
+                }
                 int topval = myst.top();
                 myst.pop();
                 std::cout<<"\n";
@@ -188,6 +197,12 @@ public:
                 opHistory.push_back(opi);
             }else if(choice==3){
                 std::cout<<"\n";
+                if(myst.isempty()){
+                    if(myst.isempty()){
+                        std::cout<<Color::RED<<"Stack is empty. There is no top element \n"<<Color::RESET;
+                        continue;
+                    }
+                }
                 std::cout<<"Top Element: "<<myst.top()<<"\n";
                 Operation opi;
                 opi.opType = 3;
@@ -214,7 +229,12 @@ public:
                 opHistory.push_back(opi);
 
             }else if(choice==6){
+                
                 int target; std::cin>>target;
+                if(myst.isempty()){
+                    std::cout<<Color::RED<<"Stack is empty. Can't Perform Search operation \n"<<Color::RESET;
+                    continue;
+                }
                 std::cout<<"\nSearching Element..";
                 Operation opi;
                 opi.opType = 6;
@@ -230,6 +250,10 @@ public:
                 opHistory.push_back(opi);
             }else if(choice==8){
                 std::cout<<"\n\n";
+                if(opHistory.empty()){
+                    std::cout<<Color::CYAN<<"No history Available\n"<<Color::RESET;
+                    continue;
+                }
                 std::cout<<Color::BBLUE<<"Stack Operation History :- \n\n"<<Color::RESET;
                 std::cout<<"Operation performed  |  Message\n";
                 for(auto op : opHistory){
