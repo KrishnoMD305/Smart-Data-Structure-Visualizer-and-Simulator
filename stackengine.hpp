@@ -59,6 +59,7 @@ public:
     }
 
     friend class VisuStack;
+    friend class StackMenu;
 
 };
 
@@ -151,6 +152,44 @@ public:
     VisuStack mys;
 
     StackMenu(): mys(myst) {}
+
+    void menubar(){
+        text.stackvisu();
+        while(1){
+            std::cout<<"Current Stack: \n\n";
+            mys.visualize();
+            std::cout<<"\n\n";
+            text.showCmplxytbl();
+            std::cout<<"\n\n";
+            text.show_cmd();
+            std::cout<<"\n>>> ";
+
+            int choice;
+            std::cin>>choice;
+
+            if(choice==1){
+                int val; 
+                std::cin>>val;
+                myst.push(val);
+                std::cout<<"\n";
+                std::cout<<Color::GREEN<<"Successfully pushed value\n"<<Color::RESET;
+                Operation opi;
+                opi.opType = 1;
+                opi.opmsg = "Pushed element " + std::to_string(val);
+                opHistory.push_back(opi);
+            }else if(choice==2){
+                int topval = myst.top();
+                myst.pop();
+                std::cout<<"\n";
+                std::cout<<Color::RED<<"Successfully poped \n"<<Color::RESET;
+                Operation opi;
+                opi.opType = 2;
+                opi.opmsg = "Poped last element: " + std::to_string(topval);
+                opHistory.push_back(opi);
+            }
+
+        }
+    }
 
 
 };
