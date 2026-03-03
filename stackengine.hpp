@@ -8,7 +8,14 @@ private:
     std::vector<T> data;
 
 public:
+    enum{
+        MAX_LEN = 10;
+    };
+
     void push(const T& val){
+        if(data.size() > MAX_LEN){
+            throw std::overflow_error("Stack Overflow! Can't push more. ");
+        }
         data.push_back(val);
     }
 
@@ -39,5 +46,6 @@ public:
         data.clear();
     }
 
+    
 
 };
