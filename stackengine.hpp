@@ -249,6 +249,11 @@ public:
 
                     std::cout<<op.opmsg<<"\n";
                 }
+            }else if(choice==7){
+                break;
+            }else{
+                std::cout<<"\n";
+                std::cout<<Color::BRED<<"Invalid Choice!! Try Again\n"<<Color::RESET;
             }
 
         }
