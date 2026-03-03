@@ -47,6 +47,15 @@ public:
         data.clear();
     }
 
+    int search_el(const T& val){
+        for(int i=0; i<len(); i++){
+            if(data[i]==val){
+                return i;
+            }
+            return -1;
+        }
+    }
+
     friend class VisuStack;
 
 };
@@ -98,5 +107,18 @@ public:
                 }
             }
         }
+    }
+};
+
+class msgs{
+public:
+    void showCmplxytbl(){
+        std::cout<<"push    O(1)   |    len    O(1)\n";
+        std::cout<<"pop     O(1)   |  isempty  O(1)\n";
+        std::cout<<"top     O(1)   |   search  O(n)\n";
+    }
+
+    void show_cmd(){
+        
     }
 };
