@@ -2,6 +2,7 @@
 #include<vector> // for storing stack
 #include<stdexcept> // exception handling
 #include<string>
+#include<iostream>
 template<typename T>
 class MyStack{
 private:
@@ -56,6 +57,6 @@ private:
     MyStack<int> myData;
 public:
     VisuStack(MyStack<int> st);
-    std::string stackcont(std::string str);
+    std::string stackcont(std::string str, bool istop);
     void visualize();
 };
