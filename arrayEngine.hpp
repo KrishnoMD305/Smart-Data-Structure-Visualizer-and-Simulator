@@ -95,7 +95,12 @@ public:
         size--;
     }
 
+    int get_el(int i){
+        return data[i];
+    }
+
     friend class VisuArray;
+    
 };
 
 
@@ -137,5 +142,11 @@ class SearchArray{
 public:
     MyArray arr; 
     SearchArray(const MyArray &tmp) : arr(tmp){}
-    
+
+
+    void linear_visu(){
+        bool found = false;
+
+
+    }
 };
