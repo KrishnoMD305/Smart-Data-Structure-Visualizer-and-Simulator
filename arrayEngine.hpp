@@ -316,7 +316,7 @@ public:
             }
 
             std::cout<<Color::BMAGENTA<<"\nChecking..\n"<<Color::RESET;
-            Sleep(2000);
+            Sleep(4000);
 
             if(found){
                 std::cout<<Color::BG_GREEN<<"FOUND"<<Color::RESET<<"\n";
