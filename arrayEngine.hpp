@@ -3,6 +3,7 @@
 #include "colors.hpp"
 #include<iostream>
 #include<string>
+#include<windows.h>
 
 
 class MyArray{
@@ -141,12 +142,58 @@ public:
 class SearchArray{
 public:
     MyArray arr; 
+     
     SearchArray(const MyArray &tmp) : arr(tmp){}
 
 
-    void linear_visu(){
+    void linear_visu(int target){
         bool found = false;
+        int length = arr.len();
 
+        int n = arr.len();
+        int num = 5*n - 2;
+        int max_element = arr.get_el(0);
+
+        for(int i=1; i<n; i++){
+            max_element = (arr.get_el(i) > max_element) ? arr.get_el(i) : max_element;
+        }
+
+        for(int idx=0; idx<length; idx++){
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int i=0; i<n; i++){
+                    if(arr.get_el(i) >= lev){
+                        if(i==idx){
+                            std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+
+            if(arr.get_el(idx)==target){
+                found = true;
+            }
+
+            std::cout<<Color::BMAGENTA<<"Checking..\n"<<Color::RESET;
+            Sleep(2000);
+            if(found){
+                std::cout<<Color::BG_GREEN<<"FOUND\n"<<Color::RESET;
+                std::cout<<"Element at ";
+                std::cout<<Color::BOLD<<"Index - "<<idx<<". \n"<<Color::RESET;
+                break;
+            }else{
+                std::cout<<Color::BG_RED<<"NOT FOUND\n"<<Color::RESET;
+                std::cout<<"\n\n";
+            }
+            Sleep(2000);
+        }
 
     }
 };
