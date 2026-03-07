@@ -1,5 +1,7 @@
 #pragma once
 #include<string>
+// B = Bright
+// BG = BackGround
 
 namespace Color{
     const std::string BOLD = "\033[1m";

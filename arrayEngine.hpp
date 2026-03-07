@@ -128,6 +128,14 @@ public:
             std::cout<<"\n";
         }
         std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
-        
+
     }
+};
+
+
+class SearchArray{
+public:
+    MyArray arr; 
+    SearchArray(const MyArray &tmp) : arr(tmp){}
+    
 };
