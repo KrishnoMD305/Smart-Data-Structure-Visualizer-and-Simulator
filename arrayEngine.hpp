@@ -101,6 +101,7 @@ public:
     }
 
     friend class VisuArray;
+    friend class SortArray;
     
 };
 
@@ -385,6 +386,14 @@ public:
 
     SortArray(const MyArray &tmp) : arr(tmp){}
 
+    std::string center(int num, int width){
+        std::string s = std::to_string(num);
+        int left = (width - s.length()) / 2;
+        int right = width - s.length() - left;
+
+        return std::string(left,' ') + s + std::string(right,' ');
+    }
+
     void bubble_visu(){
         int n = arr.len();
         int num = 5*n - 2;
@@ -401,14 +410,69 @@ public:
                 for(int lev = max_element; lev>0; lev--){
                     for(int k=0; k<n; k++){
                         if(arr.get_el(i) >= lev){
-                            
+                            if(k==j || k==j+1){
+                                std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                            }else{
+                                std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                            }
                         }else{
                             std::cout<<"   ";
                         }
                         std::cout<<std::string(2, ' ');
                     }
+                    std::cout<<"\n";
                 }
+                std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+                for(int k=0; k<n; k++){
+                    if(i==j || i==j+1){
+                        std::cout<<Color::BG_YELLOW<<center(arr.get_el(i), 3)<<Color::RESET;
+                    }else{
+                        std::cout<<center(arr.get_el(i), 3);
+                    }
+                    std::cout<<"  ";
+                }
+                std::cout<<"\n";
+                std::cout<<Color::BMAGENTA<<"Comparing "<<arr.get_el(j)<<" and "<<arr.get_el(j+1)<<"."<<Color::RESET<<"\n";
+                if(arr.data[j] > arr.data[j+1]){
+                    int t = arr.data[j];
+                    arr.data[j] = arr.data[j+1];
+                    arr.data[j+1] = t;
+                    std::cout<<Color::BOLD<<arr.data[j]<<" is greater than "<<arr.data[j+1]<<". Need swap."<<Color::RESET<<"\n";
+                    std::cout<<"\n";
+                    std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+                    for(int lev = max_element; lev>0; lev--){
+                        for(int k=0; k<n; k++){
+                            if(arr.get_el(i) >= lev){
+                                if(k==j || k==j+1){
+                                    std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                                }else{
+                                    std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                                }
+                            }else{
+                                std::cout<<"   ";
+                            }
+                            std::cout<<std::string(2, ' ');
+                        }
+                        std::cout<<"\n";
+                    }
+                    std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+                    for(int k=0; k<n; k++){
+                        if(i==j || i==j+1){
+                            std::cout<<Color::BG_GREEN<<center(arr.get_el(i), 3)<<Color::RESET;
+                        }else{
+                            std::cout<<center(arr.get_el(i), 3);
+                        }
+                        std::cout<<"  ";
+                    }
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BG_GREEN<<"Elements Swapped."<<Color::RESET<<"\n";
+
+                }else{
+                    std::cout<<Color::BOLD<<arr.data[j]<<" is lower than "<<arr.data[j+1]<<". Doesn't need swap."<<Color::RESET<<"\n";
+                }
+
             }
+
         }
     }
 
