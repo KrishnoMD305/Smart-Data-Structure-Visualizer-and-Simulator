@@ -495,4 +495,19 @@ public:
         }
     }
 
+    void insertion_sort(){
+        int n = arr.len();
+        for(int i=1; i<n; i++){
+            int key = arr.data[i];
+            int j = i - 1;
+
+            while(j>=0 && arr.data[j]>key){
+                arr.data[j+1] = arr.data[j];
+                j--;
+            }
+
+            arr.data[j+1] = key;
+        }
+    }
+
 };
