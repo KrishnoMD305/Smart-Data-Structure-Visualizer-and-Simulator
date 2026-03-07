@@ -400,7 +400,7 @@ public:
         int max_element = arr.get_el(0);
 
         for(int i=1; i<n; i++){
-            max_element = (arr.get_el(0) > max_element) ? arr.get_el(0) : max_element;
+            max_element = (arr.get_el(i) > max_element) ? arr.get_el(i) : max_element;
         }
 
         for(int i=0; i<n-1; i++){
@@ -409,7 +409,7 @@ public:
                 std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
                 for(int lev = max_element; lev>0; lev--){
                     for(int k=0; k<n; k++){
-                        if(arr.get_el(i) >= lev){
+                        if(arr.get_el(k) >= lev){
                             if(k==j || k==j+1){
                                 std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
                             }else{
@@ -424,10 +424,10 @@ public:
                 }
                 std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
                 for(int k=0; k<n; k++){
-                    if(i==j || i==j+1){
-                        std::cout<<Color::BG_YELLOW<<center(arr.get_el(i), 3)<<Color::RESET;
+                    if(k==j || k==j+1){
+                        std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
                     }else{
-                        std::cout<<center(arr.get_el(i), 3);
+                        std::cout<<center(arr.get_el(k), 3);
                     }
                     std::cout<<"  ";
                 }
@@ -444,7 +444,7 @@ public:
                     std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
                     for(int lev = max_element; lev>0; lev--){
                         for(int k=0; k<n; k++){
-                            if(arr.get_el(i) >= lev){
+                            if(arr.get_el(k) >= lev){
                                 if(k==j || k==j+1){
                                     std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
                                 }else{
@@ -459,10 +459,10 @@ public:
                     }
                     std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
                     for(int k=0; k<n; k++){
-                        if(i==j || i==j+1){
-                            std::cout<<Color::BG_GREEN<<center(arr.get_el(i), 3)<<Color::RESET;
+                        if(k==j || k==j+1){
+                            std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
                         }else{
-                            std::cout<<center(arr.get_el(i), 3);
+                            std::cout<<center(arr.get_el(k), 3);
                         }
                         std::cout<<"  ";
                     }
