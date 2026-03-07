@@ -348,4 +348,31 @@ public:
 
         std::cout<<"\n\n";
     }
+
+
+    int linear_search(int target){
+        for(int i=0; i<arr.len(); i++){
+            if(arr.get_el(i)==target){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    int binary_search(int target){
+        int mid = -1, low = 0, high = arr.len()-1;
+
+        while(low<=high){
+            mid = low + (high-low) / 2;
+            if(arr.get_el(mid)==target){
+                return mid;
+            }else if(arr.get_el(mid)<target){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
 };
