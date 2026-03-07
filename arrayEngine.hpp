@@ -433,12 +433,14 @@ public:
                 }
                 std::cout<<"\n";
                 std::cout<<Color::BMAGENTA<<"Comparing "<<arr.get_el(j)<<" and "<<arr.get_el(j+1)<<"."<<Color::RESET<<"\n";
+                Sleep(2000);
                 if(arr.data[j] > arr.data[j+1]){
                     int t = arr.data[j];
                     arr.data[j] = arr.data[j+1];
                     arr.data[j+1] = t;
                     std::cout<<Color::BOLD<<arr.data[j]<<" is greater than "<<arr.data[j+1]<<". Need swap."<<Color::RESET<<"\n";
                     std::cout<<"\n";
+                    Sleep(3000);
                     std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
                     for(int lev = max_element; lev>0; lev--){
                         for(int k=0; k<n; k++){
@@ -469,6 +471,7 @@ public:
 
                 }else{
                     std::cout<<Color::BOLD<<arr.data[j]<<" is lower than "<<arr.data[j+1]<<". Doesn't need swap."<<Color::RESET<<"\n";
+                    Sleep(3000);
                 }
 
             }
