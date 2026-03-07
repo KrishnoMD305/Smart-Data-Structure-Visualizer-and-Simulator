@@ -376,3 +376,40 @@ public:
         return -1;
     }
 };
+
+
+
+class SortArray{
+public:
+    MyArray arr;
+
+    SortArray(const MyArray &tmp) : arr(tmp){}
+
+    void bubble_visu(){
+        int n = arr.len();
+        int num = 5*n - 2;
+        int max_element = arr.get_el(0);
+
+        for(int i=1; i<n; i++){
+            max_element = (arr.get_el(0) > max_element) ? arr.get_el(0) : max_element;
+        }
+
+        for(int i=0; i<n-1; i++){
+            for(int j=0; j<n-i-1; j++){
+
+                std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+                for(int lev = max_element; lev>0; lev--){
+                    for(int k=0; k<n; k++){
+                        if(arr.get_el(i) >= lev){
+                            
+                        }else{
+                            std::cout<<"   ";
+                        }
+                        std::cout<<std::string(2, ' ');
+                    }
+                }
+            }
+        }
+    }
+
+};
