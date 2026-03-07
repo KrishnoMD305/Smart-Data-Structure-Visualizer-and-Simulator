@@ -236,4 +236,24 @@ public:
 
         std::cout<<"\n\n";
     }
+
+
+    void binary_visu(int target){
+        bool found = false;
+        int length = arr.len();
+
+        int n = arr.len();
+        int num = 5*n - 2;
+        int max_element = arr.get_el(0);
+
+        for(int i=1; i<n; i++){
+            max_element = (arr.get_el(i) > max_element) ? arr.get_el(i) : max_element;
+        }
+
+        int low = 0, high = n-1, mid = -1;
+
+        while(low <= high){
+            
+        }
+    }
 };
