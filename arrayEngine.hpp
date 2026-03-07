@@ -288,7 +288,27 @@ public:
                 std::cout<<"  ";
             }
             std::cout<<"\n";
-
+            for(int i=0; i<n; i++){
+                std::string lab = "   ";
+                if(i==low && i==mid && i==high){
+                    lab = "LMH";
+                }else if(i==low && i==mid){
+                    lab = "LM ";
+                }else if(i==mid && i==high){
+                    lab = "MH ";
+                }else if(i==low && i==high){
+                    lab = "LH ";
+                }else if(i==low){
+                    lab = " L ";
+                }else if(i==mid){
+                    lab = " M ";
+                }else if(i==high){
+                    lab = " H ";
+                }
+                std::cout<<lab<<"  ";
+            }
+            std::cout<<"\n";
+            
         }
     }
 };
