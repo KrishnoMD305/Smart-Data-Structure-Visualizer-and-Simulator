@@ -251,9 +251,44 @@ public:
         }
 
         int low = 0, high = n-1, mid = -1;
-
         while(low <= high){
-            
+            mid = low + (high-low)/2;
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int i=0; i<n; i++){
+                    if(arr.get_el(i) >= lev){
+                        if(i==mid){
+                            std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
+                        }else if(i==low || i==high){
+                            std::cout<<Color::BYELLOW<<" █ "<<Color::RESET;
+                        }else if(i>low && i<high){
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::DIM<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+
+            for(int i=0; i<n; i++){
+                if(i==mid){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(i), 3)<<Color::RESET;
+                }else if(i==low || i==high){
+                    std::cout<<Color::BG_YELLOW<<center(arr.get_el(i), 3)<<Color::RESET;
+                }else if(i>low && i<high){
+                    std::cout<<center(arr.get_el(i), 3);
+                }else{
+                    std::cout<<Color::DIM<<center(arr.get_el(i), 3)<<Color::RESET;
+                }
+                std::cout<<"  ";
+            }
+            std::cout<<"\n";
+
         }
     }
 };
