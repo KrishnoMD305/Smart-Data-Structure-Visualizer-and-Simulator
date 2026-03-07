@@ -111,6 +111,14 @@ private:
 public:
     VisuArray(const MyArray &tmp): arr(tmp) {}
 
+    std::string center(int num, int width){
+        std::string s = std::to_string(num);
+        int left = (width - s.length()) / 2;
+        int right = width - s.length() - left;
+
+        return std::string(left,' ') + s + std::string(right,' ');
+    }
+
     void show(){
         int n = arr.len();
         int num = 5*n - 2;
@@ -134,6 +142,10 @@ public:
             std::cout<<"\n";
         }
         std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+        for(int i=0; i<n; i++){
+            std::cout<<center(arr.get_el(i), 3);
+            std::cout<<"  ";
+        }
 
     }
 };
@@ -145,6 +157,13 @@ public:
      
     SearchArray(const MyArray &tmp) : arr(tmp){}
 
+    std::string center(int num, int width){
+        std::string s = std::to_string(num);
+        int left = (width - s.length()) / 2;
+        int right = width - s.length() - left;
+
+        return std::string(left,' ') + s + std::string(right,' ');
+    }
 
     void linear_visu(int target){
         bool found = false;
@@ -176,24 +195,43 @@ public:
                 std::cout<<"\n";
             }
             std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+            for(int i=0; i<n; i++){
+                if(i==idx){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(i), 3)<<Color::RESET;
+                }else{
+                    std::cout<<center(arr.get_el(i), 3);
+                }
+                std::cout<<"  ";
+            }
+
+            std::cout<<"\n";
 
             if(arr.get_el(idx)==target){
                 found = true;
             }
 
-            std::cout<<Color::BMAGENTA<<"Checking..\n"<<Color::RESET;
+            std::cout<<Color::BMAGENTA<<"\nChecking..\n"<<Color::RESET;
             Sleep(2000);
             if(found){
-                std::cout<<Color::BG_GREEN<<"FOUND\n"<<Color::RESET;
+                std::cout<<Color::BG_GREEN<<"FOUND"<<Color::RESET<<"\n";
                 std::cout<<"Element at ";
-                std::cout<<Color::BOLD<<"Index - "<<idx<<". \n"<<Color::RESET;
+                std::cout<<Color::BOLD<<"Index : "<<idx<<". \n"<<Color::RESET;
                 break;
             }else{
-                std::cout<<Color::BG_RED<<"NOT FOUND\n"<<Color::RESET;
+                std::cout<<Color::BG_RED<<"NOT FOUND"<<Color::RESET<<"\n";
                 std::cout<<"\n\n";
             }
             Sleep(2000);
         }
 
+        std::cout<<"\n\n";
+
+        std::cout<<Color::BCYAN<<Color::BOLD<<"Linear Searching Complete"<<Color::RESET<<"\n\n";
+
+        if(!found){
+            std::cout<<Color::BG_RED<<"Element is not presented in the array"<<Color::RESET<<"\n";
+        }
+
+        std::cout<<"\n\n";
     }
 };

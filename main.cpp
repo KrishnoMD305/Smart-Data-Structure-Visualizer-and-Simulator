@@ -19,7 +19,12 @@ int main(){
     arr.display();
     VisuArray vv(arr);
     vv.show();
+
+    SearchArray sa(arr);
+
+    sa.linear_visu(5);
     
+
 
     
 
