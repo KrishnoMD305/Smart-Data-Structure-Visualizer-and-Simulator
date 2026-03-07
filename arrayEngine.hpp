@@ -1,6 +1,7 @@
 #pragma once
 
 #include "colors.hpp"
+#include<iostream>
 
 
 class MyArray{
@@ -48,5 +49,16 @@ public:
         }
         data[i] = val;
         size++;
+    }
+
+    int len(){
+        return size;
+    }
+
+    void display(){
+        for(int i=0; i<size; i++){
+            std::cout<<data[i]<<" ";
+        }
+        std::cout<<"\n";
     }
 };
