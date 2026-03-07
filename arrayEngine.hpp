@@ -97,5 +97,14 @@ public:
 
 
 class VisuArray{
+private:
+    MyArray arr;
+public:
+    VisuArray(MyArray tmp): arr(tmp) {}
 
+    void show(){
+        int n = arr.len();
+        int num = 5*n - 2;
+        
+    }
 };
