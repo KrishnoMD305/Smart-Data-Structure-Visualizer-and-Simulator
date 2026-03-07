@@ -307,8 +307,45 @@ public:
                 }
                 std::cout<<lab<<"  ";
             }
-            std::cout<<"\n";
-            
+            std::cout<<"\n\n";
+
+            std::cout<<Color::BG_YELLOW<<"Low="<<low<<" Mid="<<mid<<" High="<<high<<Color::RESET<<"\n\n";
+
+            if(arr.get_el(mid)==target){
+                found = true;
+            }
+
+            std::cout<<Color::BMAGENTA<<"\nChecking..\n"<<Color::RESET;
+            Sleep(2000);
+
+            if(found){
+                std::cout<<Color::BG_GREEN<<"FOUND"<<Color::RESET<<"\n";
+                std::cout<<"Element at ";
+                std::cout<<Color::BOLD<<"Index : "<<mid<<". \n"<<Color::RESET;
+                break;
+            }else if(arr.get_el(mid) < target){
+                low = mid + 1;
+                std::cout<<Color::BG_RED<<"NOT FOUND"<<Color::RESET<<"\n";
+                std::cout<<Color::BG_BLUE<<"Searching Right Half"<<Color::RESET<<"\n";
+                std::cout<<"\n\n";
+            }else{
+                high = mid - 1;
+                std::cout<<Color::BG_RED<<"NOT FOUND"<<Color::RESET<<"\n";
+                std::cout<<Color::BG_BLUE<<"Searching left Half"<<Color::RESET<<"\n";
+                std::cout<<"\n\n";
+            }
+            Sleep(2000);
+
         }
+
+        std::cout<<"\n\n";
+
+        std::cout<<Color::BCYAN<<Color::BOLD<<"Binary Searching Complete"<<Color::RESET<<"\n\n";
+
+        if(!found){
+            std::cout<<Color::BG_RED<<"Element is not presented in the array"<<Color::RESET<<"\n";
+        }
+
+        std::cout<<"\n\n";
     }
 };
