@@ -61,4 +61,28 @@ public:
         }
         std::cout<<"\n";
     }
+
+    void del_at_first(){
+        if(size==1){
+            size--;
+            return;
+        }
+        int i=1;
+        for(;i<size; i++){
+            data[i-1] = data[i];
+        }
+        size--;
+    }
+    void del_at_last(){
+        size--;
+    }
+
+    void del_mid(int target){
+        for(int i=0; i<size-1; i++){
+            if(i>=target){
+                data[i] = data[i+1];
+            }
+        }
+        size--;
+    }
 };
