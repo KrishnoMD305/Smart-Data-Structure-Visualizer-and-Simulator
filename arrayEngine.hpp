@@ -482,4 +482,17 @@ public:
         std::cout<<Color::BGREEN<<"Array Sorting Successful. "<<Color::RESET<<"\n\n";
     }
 
+    void bubble_sort(){
+        int n = arr.len();
+        for(int i=0; i<n-1; i++){
+            for(int j=0; j<n-i-1; j++){
+                if(arr.data[j] > arr.data[j+1]){
+                    int tmp = arr.data[j];
+                    arr.data[j] = arr.data[j+1];
+                    arr.data[j+1] = tmp;
+                }
+            }
+        }
+    }
+
 };
