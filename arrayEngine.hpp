@@ -10,6 +10,14 @@ private:
     int data[50];
     int size = 0;
 public:
+    MyArray(){}
+    MyArray(const MyArray &arr){
+        size = arr.size;
+
+        for(int i=0; i,size; i++){
+            data[i] = arr.data[i];
+        }
+    }
     void insert_at_last(int val){
         if(size==0){
             data[size] = val;
@@ -85,4 +93,9 @@ public:
         }
         size--;
     }
+};
+
+
+class VisuArray{
+
 };
