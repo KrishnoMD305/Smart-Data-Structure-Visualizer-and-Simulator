@@ -18,4 +18,22 @@ public:
         data[size] = val;
         size++;
     }
+    void insert_at_first(int val){
+        if(size==0){
+            data[size] = val;
+            size++;
+            return;
+        }
+        int temp[size+1];
+        temp[0] = val;
+        int id = 1;
+        for(int i=0; i<size; i++){
+            temp[id] = data[i];
+            id++;
+        }
+        size++;
+        for(int i=0; i<size; i++){
+            data[i] = temp[i];
+        }
+    }
 };
