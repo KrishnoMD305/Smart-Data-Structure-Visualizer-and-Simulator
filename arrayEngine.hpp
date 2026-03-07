@@ -2,6 +2,7 @@
 
 #include "colors.hpp"
 #include<iostream>
+#include<string>
 
 
 class MyArray{
@@ -14,7 +15,7 @@ public:
     MyArray(const MyArray &arr){
         size = arr.size;
 
-        for(int i=0; i,size; i++){
+        for(int i=0; i<size; i++){
             data[i] = arr.data[i];
         }
     }
@@ -93,6 +94,8 @@ public:
         }
         size--;
     }
+
+    friend class VisuArray;
 };
 
 
@@ -100,11 +103,31 @@ class VisuArray{
 private:
     MyArray arr;
 public:
-    VisuArray(MyArray tmp): arr(tmp) {}
+    VisuArray(const MyArray &tmp): arr(tmp) {}
 
     void show(){
         int n = arr.len();
         int num = 5*n - 2;
+        int max_element = arr.data[0];
+
+        for(int i=1; i<n; i++){
+            max_element = (arr.data[i] > max_element) ? arr.data[i] : max_element;
+        }
+
+
+        std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+        for(int lev = max_element; lev>0; lev--){
+            for(int i=0; i<n; i++){
+                if(arr.data[i] >= lev){
+                    std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                }else{
+                    std::cout<<"   ";
+                }
+                std::cout<<std::string(2, ' ');
+            }
+            std::cout<<"\n";
+        }
+        std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
         
     }
 };
