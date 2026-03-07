@@ -36,4 +36,17 @@ public:
             data[i] = temp[i];
         }
     }
+
+    void insert_mid(int val, int target){
+        int i = size-1;
+        while(i>=0){
+            data[i+1] = data[i];
+            if(i==target){
+                break;
+            }
+            i--;
+        }
+        data[i] = val;
+        size++;
+    }
 };
