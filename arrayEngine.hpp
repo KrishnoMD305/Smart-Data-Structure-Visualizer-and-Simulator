@@ -511,7 +511,88 @@ public:
     }
 
     void insertion_visu(){
-        
+        int n = arr.len();
+        int num = 5*n - 2;
+        int max_element = arr.get_el(0);
+
+        for(int i=1; i<n; i++){
+            max_element = (arr.get_el(i) > max_element) ? arr.get_el(i) : max_element;
+        }
+        for(int i=1; i<n; i++){
+            int key = arr.data[i];
+            int j = i-1; 
+
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int k=0; k<n; k++){
+                    if(arr.get_el(k) >= lev){
+                        if(k==i){
+                            std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                        }else if(k<i){
+                            std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+            for(int k=0; k<n; k++){
+                if(k==i){
+                    std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else if(k<i){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else{
+                    std::cout<<center(arr.get_el(k), 3);
+                }
+                std::cout<<"  ";
+            }
+            std::cout<<"\n";
+            std::cout<<Color::BMAGENTA<<"Picking Key element."<<Color::RESET<<"\n";
+            Sleep(4000);
+            while(j>=0 && arr.data[j]>key){
+                arr.data[j+1] = arr.data[j];
+                arr.data[j] = key;
+                std::cout<<"\n";
+                std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+                for(int lev = max_element; lev>0; lev--){
+                    for(int k=0; k<n; k++){
+                        if(arr.get_el(k) >= lev){
+                            if(k==j || k==j+1){
+                                std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                            }else if(k<i){
+                                std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                            }else{
+                                std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                            }
+                        }else{
+                            std::cout<<"   ";
+                        }
+                        std::cout<<std::string(2, ' ');
+                    }
+                    std::cout<<"\n";
+                }
+                std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+                for(int k=0; k<n; k++){
+                    if(k==j || k==j+1){
+                        std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+                    }else if(k<i){
+                        std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                    }else{
+                        std::cout<<center(arr.get_el(k), 3);
+                    }
+                    std::cout<<"  ";
+                }
+                std::cout<<"\n";
+                std::cout<<Color::BOLD<<arr.data[j]<<" > "<<arr.data[j+1]<<". Shifting Right. "<<Color::RESET<<"\n";
+                Sleep(4000);
+                j--;
+            }
+        }
     }
 
 };
