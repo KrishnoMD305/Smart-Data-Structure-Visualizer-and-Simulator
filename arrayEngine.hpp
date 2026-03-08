@@ -636,8 +636,107 @@ public:
         for(int i=1; i<n; i++){
             max_element = (arr.get_el(i) > max_element) ? arr.get_el(i) : max_element;
         }
+        for(int i=0; i<n-1; i++){
+            int mini = i;
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int k=0; k<n; k++){
+                    if(arr.get_el(k) >= lev){
+                        if(k==i){
+                            std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                        }else if(k<i){
+                            std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+            for(int k=0; k<n; k++){
+                if(k==i){
+                    std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else if(k<i){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else{
+                    std::cout<<center(arr.get_el(k), 3);
+                }
+                std::cout<<"  ";
+            }
+            std::cout<<"\n";
+            std::cout<<Color::BMAGENTA<<"Finding minimum element from index "<<i<<". "<<Color::RESET<<"\n";
+            Sleep(4000);
+            for(int j=i+1; j<n; j++){
+                if(arr.data[j] < arr.data[mini]){
+                    mini = j;
+                }
+                std::cout<<"\n";
+                std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+                for(int lev = max_element; lev>0; lev--){
+                    for(int k=0; k<n; k++){
+                        if(arr.get_el(k) >= lev){
+                            if(k==mini){
+                                std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                            }else if(k==j){
+                                std::cout<<Color::BG_BLUE<<" █ "<<Color::RESET;
+                            }else if(k<i){
+                                std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                            }else{
+                                std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                            }
+                        }else{
+                            std::cout<<"   ";
+                        }
+                        std::cout<<std::string(2, ' ');
+                    }
+                    std::cout<<"\n";
+                }
+                std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+                for(int k=0; k<n; k++){
+                    if(k==mini){
+                        std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+                    }else if(k==j){
+                        std::cout<<Color::BCYAN<<center(arr.get_el(k), 3)<<Color::RESET;
+                    }else if(k<i){
+                        std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                    }else{
+                        std::cout<<center(arr.get_el(k), 3);
+                    }
+                    std::cout<<"  ";
+                }
+                std::cout<<"\n";
+                std::cout<<Color::BOLD<<"Comparing "<<arr.data[j]<<" with current minimum "<<arr.data[mini]<<". "<<Color::RESET<<"\n";
+                Sleep(4000);
+            }
+            int tmp = arr.data[mini];
+            arr.data[mini] = arr.data[i];
+            arr.data[i] = tmp;
+            std::cout<<"\n";
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int k=0; k<n; k++){
+                    if(arr.get_el(k) >= lev){
+                        if(k==i){
+                            std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                        }else if(k<i){
+                            std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+        }
 
-        
     }
 
 };
