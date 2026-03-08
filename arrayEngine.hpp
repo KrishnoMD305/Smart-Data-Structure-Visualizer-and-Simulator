@@ -846,6 +846,157 @@ public:
             std::cout<<"  ";
         }
         std::cout<<"\n";
+        std::cout<<Color::BG_YELLOW<<"Pvot selected: "<<pivot<<" at index "<<high<<Color::RESET<<"\n";
+        Sleep(4000);
+
+        for(int j=low; j<high; j++){
+            std::cout<<"\n";
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int k=0; k<n; k++){
+                    if(arr.get_el(k) >= lev){
+                        if(sorted.data[k]){
+                            std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                        }else if(k==high){
+                            std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                        }else if(k==i){
+                            std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
+                        }else if(k==j){
+                            std::cout<<Color::BG_CYAN<<" █ "<<Color::RESET;
+                        }else if(k>low || k<high){
+                            std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+            for(int k=0; k<n; k++){
+                if(sorted.data[k]){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else if(k==high){
+                    std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else if(k==i){
+                    std::cout<<Color::BGREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else if(k==j){
+                    std::cout<<Color::BCYAN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else if(k>low || k<high){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else{
+                    std::cout<<center(arr.get_el(k), 3);
+                }
+                std::cout<<"  ";
+            }
+            std::cout<<"\n";
+            std::cout<<Color::BOLD<<"Comparing element: "<<arr.data[j]<<" with pivot: "<<pivot<<". "<<Color::RESET<<"\n";
+            Sleep(4000);
+            if(arr.data[j] <= pivot){
+                i++;
+                if(i != j){
+                    int tmp = arr.data[i];
+                    arr.data[i] = arr.data[j];
+                    arr.data[j] = tmp;
+                    std::cout<<"\n";
+                    std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+                    for(int lev = max_element; lev>0; lev--){
+                        for(int k=0; k<n; k++){
+                            if(arr.get_el(k) >= lev){
+                                if(sorted.data[k]){
+                                    std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                                }else if(k==high){
+                                    std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                                }else if(k==i){
+                                    std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
+                                }else if(k==j){
+                                    std::cout<<Color::BG_CYAN<<" █ "<<Color::RESET;
+                                }else if(k>low || k<high){
+                                    std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                                }else{
+                                    std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                                }
+                            }else{
+                                std::cout<<"   ";
+                            }
+                            std::cout<<std::string(2, ' ');
+                        }
+                        std::cout<<"\n";
+                    }
+                    std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+                    for(int k=0; k<n; k++){
+                        if(sorted.data[k]){
+                            std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                        }else if(k==high){
+                            std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+                        }else if(k==i){
+                            std::cout<<Color::BGREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                        }else if(k==j){
+                            std::cout<<Color::BCYAN<<center(arr.get_el(k), 3)<<Color::RESET;
+                        }else if(k>low || k<high){
+                            std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                        }else{
+                            std::cout<<center(arr.get_el(k), 3);
+                        }
+                        std::cout<<"  ";
+                    }
+                    std::cout<<"\n";
+                    std::cout<<Color::BMAGENTA<<arr.data[j]<<" <= pivot: "<<pivot<<". Swapped "<<arr.data[j]<<" and "<<pivot<<". "<<Color::RESET<<"\n";
+                    Sleep(4000);
+                }else{
+                    std::cout<<Color::BMAGENTA<<"Already in place. No swap is needed. "<<Color::RESET<<"\n";
+                    Sleep(3000);
+                }
+            }else{
+                std::cout<<Color::BOLD<<arr.data[j]<<" > pivot: "<<pivot<<". No Swap needed. "<<Color::RESET<<"\n";
+                Sleep(3000);
+            }
+        }
+        int temp = arr.data[i+1];
+        arr.data[i+1] = arr.data[high];
+        arr.data[high] = temp;
+        sorted.data[i+1] = 1;
+        std::cout<<"\n";
+        std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+        for(int lev = max_element; lev>0; lev--){
+            for(int k=0; k<n; k++){
+                if(arr.get_el(k) >= lev){
+                    if(sorted.data[k]){
+                        std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
+                    }else if(k==i+1){
+                        std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                    }else if(k>low || k<high){
+                        std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                    }else{
+                        std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                    }
+                }else{
+                    std::cout<<"   ";
+                }
+                std::cout<<std::string(2, ' ');
+            }
+            std::cout<<"\n";
+        }
+        std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+        for(int k=0; k<n; k++){
+            if(sorted.data[k]){
+                std::cout<<Color::BGREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+            }else if(k==i+1){
+                std::cout<<Color::BG_YELLOW<<center(arr.get_el(k), 3)<<Color::RESET;
+            }else if(k>low || k<high){
+                std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+            }else{
+                std::cout<<center(arr.get_el(k), 3);
+            }
+            std::cout<<"  ";
+        }
+        std::cout<<"\n";
+        std::cout<<Color::BG_BLUE<<"Pivot "<<arr.data[i+1]<<" is placed at index: "<<i+1<<". "<<Color::RESET<<"\n\n";
+        Sleep(4000);
+        return i+1;
     }
 
 };
