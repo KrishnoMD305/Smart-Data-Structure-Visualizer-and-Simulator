@@ -721,7 +721,7 @@ public:
                 for(int k=0; k<n; k++){
                     if(arr.get_el(k) >= lev){
                         if(k==i){
-                            std::cout<<Color::BG_YELLOW<<" █ "<<Color::RESET;
+                            std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
                         }else if(k<i){
                             std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
                         }else{
@@ -735,7 +735,20 @@ public:
                 std::cout<<"\n";
             }
             std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+            for(int k=0; k<n; k++){
+                if(k<=i){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else{
+                    std::cout<<center(arr.get_el(k), 3);
+                }
+                std::cout<<"  ";
+            }
+            std::cout<<"\n";
+            std::cout<<Color::BG_GREEN<<"Minimam element "<<arr.data[i]<<" swapped to index "<<i<<". "<<Color::RESET<<"\n\n";
+            Sleep(4000);
         }
+
+        std::cout<<Color::BGREEN<<"Array Sorting Successful. "<<Color::RESET<<"\n\n";
 
     }
 
