@@ -999,4 +999,28 @@ public:
         return i+1;
     }
 
+    void quick_helper(int low, int high, MyArray &sorted){
+        if(low<high){
+            int pivt = partition_visu(low,high,sorted);
+            quick_helper(low,pivt-1,sorted);
+            quick_helper(pivt+1,high,sorted);
+        }else if(low==high){
+            sorted.data[low] = 1;
+        }
+
+    }
+
+    void quick_visu(){
+        
+        MyArray sorted;
+        for(int i=0; i<arr.len(); i++){
+            sorted.insert_at_last(0);
+        }
+
+        int n = arr.len();
+        quick_helper(0,n-1,sorted);
+        std::cout<<Color::BGREEN<<"Array Sorting Successful. "<<Color::RESET<<"\n\n";
+
+    }
+
 };
