@@ -774,4 +774,30 @@ public:
         }
     }
 
+    int partition(int low, int high){
+        int pivot = arr.data[high];
+        int i = low - 1;
+        for(int j=low; j<high; j++){
+            if(arr.data[j]<=pivot){
+                i++;
+                int tmp = arr.data[j];
+                arr.data[j] = arr.data[i];
+                arr.data[i] = tmp;
+            }
+        }
+        int temp = arr.data[i+1];
+        arr.data[i+1] = arr.data[high];
+        arr.data[high] = temp;
+        return i+1;
+    }
+
+
+    void quick_sort(int low, int high){
+        if(low < high){
+            int piv = partition(low,high);
+            quick_sort(low, piv-1);
+            quick_sort(piv+1,high);
+        }
+    }
+
 };
