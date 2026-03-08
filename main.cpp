@@ -16,7 +16,8 @@ int main(){
 
     SortArray sa(arr);
     std::cout<<"\n";
-    sa.insertion_visu();
+    sa.selection_visu();
+    
     
     
 

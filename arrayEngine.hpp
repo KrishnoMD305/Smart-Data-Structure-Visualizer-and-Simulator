@@ -712,6 +712,13 @@ public:
                 std::cout<<Color::BOLD<<"Comparing "<<arr.data[j]<<" with current minimum "<<arr.data[mini]<<". "<<Color::RESET<<"\n";
                 Sleep(4000);
             }
+
+            if(arr.data[mini]==arr.data[i]){
+                std::cout<<Color::BG_RED<<"No minimum."<<Color::RESET<<"\n";
+                std::cout<<Color::BOLD<<"Doesn't need to be swapped."<<Color::RESET<<"\n\n";
+                Sleep(4000);
+                continue;
+            }
             int tmp = arr.data[mini];
             arr.data[mini] = arr.data[i];
             arr.data[i] = tmp;
