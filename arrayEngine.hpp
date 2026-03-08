@@ -510,4 +510,8 @@ public:
         }
     }
 
+    void insertion_visu(){
+        
+    }
+
 };
