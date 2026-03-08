@@ -592,7 +592,40 @@ public:
                 Sleep(4000);
                 j--;
             }
+            std::cout<<"\n";
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n\n";
+            for(int lev = max_element; lev>0; lev--){
+                for(int k=0; k<n; k++){
+                    if(arr.get_el(k) >= lev){
+                        if(k==j+1){
+                            std::cout<<Color::BGREEN<<" █ "<<Color::RESET;
+                        }else if(k<i){
+                            std::cout<<Color::BG_GREEN<<" █ "<<Color::RESET;
+                        }else{
+                            std::cout<<Color::BLUE<<" █ "<<Color::RESET;
+                        }
+                    }else{
+                        std::cout<<"   ";
+                    }
+                    std::cout<<std::string(2, ' ');
+                }
+                std::cout<<"\n";
+            }
+            std::cout<<Color::BG_BLUE<<std::string(num,'-')<<Color::RESET<<"\n";
+            for(int k=0; k<n; k++){
+                if(k<=i){
+                    std::cout<<Color::BG_GREEN<<center(arr.get_el(k), 3)<<Color::RESET;
+                }else{
+                    std::cout<<center(arr.get_el(k), 3);
+                }
+                std::cout<<"  ";
+            }
+            std::cout<<"\n";
+            std::cout<<Color::BCYAN<<"Key "<<key<<" placed at index "<<j+1<<". "<<Color::RESET<<"\n\n";
+            Sleep(4000);
         }
+
+        std::cout<<Color::BGREEN<<"Array Sorting Successful. "<<Color::RESET<<"\n\n";
     }
 
 };
