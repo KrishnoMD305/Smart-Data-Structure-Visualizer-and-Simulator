@@ -628,4 +628,16 @@ public:
         std::cout<<Color::BGREEN<<"Array Sorting Successful. "<<Color::RESET<<"\n\n";
     }
 
+    void selection_visu(){
+        int n = arr.len();
+        int num = 5*n - 2;
+        int max_element = arr.get_el(0);
+
+        for(int i=1; i<n; i++){
+            max_element = (arr.get_el(i) > max_element) ? arr.get_el(i) : max_element;
+        }
+
+        
+    }
+
 };
