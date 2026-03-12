@@ -1036,8 +1036,40 @@ public:
         }
         int i=0, j=0, k=left;
         while(i<n1 && j<n2){
-            
+            if(L[i] <= R[j]){
+                arr.data[k] = L[i];
+                i++;
+            }else{
+                arr.data[k] = R[j];
+                j++;
+            }
+            k++;
         }
+        while(i<n1){
+            arr.data[k] = L[i];
+            k++;
+            i++;
+        }
+        while(j<n2){
+            arr.data[k] = R[j];
+            k++;
+            j++;
+        }
+
+    }
+
+    void mergesort_helper(MyArray &arr, int left, int right){
+        if(left < right){
+            int mid = left + (right-left)/2;
+            mergesort_helper(arr,left,mid);
+            mergesort_helper(arr,mid+1,right);
+            merge(arr,left,mid,right);
+        }
+    }
+
+    void merge_sort(){
+        int left = 0, right = arr.len()-1;
+        mergesort_helper(arr,left,right);
     }
 
 };
