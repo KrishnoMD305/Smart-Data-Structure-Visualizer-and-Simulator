@@ -1023,4 +1023,21 @@ public:
 
     }
 
+
+    void merge(MyArray &arr, int left, int mid, int right){
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+        int L[n1], R[n2];
+        for(int i=0; i<n1; i++){
+            L[i] = arr.data[left + i];
+        }
+        for(int i=0; i<n2; i++){
+            R[i] = arr.data[mid+i+1];
+        }
+        int i=0, j=0, k=left;
+        while(i<n1 && j<n2){
+            
+        }
+    }
+
 };
