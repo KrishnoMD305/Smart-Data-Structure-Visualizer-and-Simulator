@@ -32,7 +32,10 @@ int main(){
     list.show();
     list.deletekey(50);
     list.show();
-
+    //list.insertatend(80);
+    //list.insertatend(90);
+    //list.insertatend(95);
+    //list.insertatend(98);
     list.visualize();
 
     return 0;
