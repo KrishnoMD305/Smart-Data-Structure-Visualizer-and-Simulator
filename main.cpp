@@ -24,6 +24,15 @@ int main(){
     list.insertbefore(34,32);
     list.insertbefore(80,75);
     list.show();
+    list.deletebegin();
+    list.show();
+    list.deleteend();
+    list.show();
+    list.deletekey(74);
+    list.show();
+    list.deletekey(50);
+    list.show();
+
     
     
     
