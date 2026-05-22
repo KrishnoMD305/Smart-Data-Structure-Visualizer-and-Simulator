@@ -2,7 +2,7 @@
 #include<string>
 // B = Bright
 // BG = BackGround
-
+ 
 namespace Color{
     const std::string BOLD = "\033[1m";
     const std::string DIM = "\033[2m";
