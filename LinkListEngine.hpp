@@ -2,6 +2,9 @@
 
 #include "colors.hpp"
 #include<iostream>
+#include<iomanip>
+#include<sstream>
+#include<string>
 
 
 template<typename T>
@@ -213,20 +216,22 @@ public:
         }
         std::cout<<"\n";
 
-        std::cout<<"HEAD ──► ";
+        std::cout<<Color::BBLUE<<"HEAD ──► "<<Color::RESET;
         for (int i = 0; i < nodes.size(); i++){
-            std::cout<<"┌────────────────┐";
+            std::cout<<Color::BYELLOW<<"┌────────────────┐"<<Color::RESET;
             if(i+1 < nodes.size()){
-                std::cout<<" ──► ";
+                std::cout<<"     ";
             }
         }
         std::cout << "\n";
 
         std::cout << "         ";
         for(int i = 0; i < nodes.size(); i++){
-            std::cout<<"│ data: "<<std::setw(6)<<std::left<<nodes[i]->data<<"   │";
+            std::cout<<Color::BYELLOW<<"|"<<Color::RESET;
+            std::cout<<" data: "<<std::setw(6)<<std::left<<nodes[i]->data<<"   ";
+            std::cout<<Color::BYELLOW<<"|"<<Color::RESET;
             if(i+1 < nodes.size()){
-                std::cout<<" ──► ";
+                std::cout<<Color::BGREEN<<" ──► "<<Color::RESET;
             }
         }
         std::cout<<"\n";
@@ -241,16 +246,18 @@ public:
             }else{
                 nextStr = "nullptr";
             }
-            std::cout<<"│ next: "<<std::left<<std::setw(9)<<nextStr<<"│";
+            std::cout<<Color::BYELLOW<<"|"<<Color::RESET;
+            std::cout<<" next: "<<std::left<<std::setw(9)<<nextStr;
+            std::cout<<Color::BYELLOW<<"|"<<Color::RESET;
             if(i+1 < nodes.size()){
-                std::cout<<" ──► ";
+                std::cout<<Color::BRED<<" ──► "<<Color::RESET;
             }
         }
         std::cout<<"\n";
 
         std::cout<<"         ";
         for(int i = 0; i < nodes.size(); i++){
-            std::cout<<"└────────────────┘";
+            std::cout<<Color::BYELLOW<<"└────────────────┘"<<Color::RESET;
             if(i+1 < nodes.size()){
                 std::cout<<"     ";
             }
@@ -260,18 +267,21 @@ public:
         std::cout<<"         ";
         for(int i = 0; i < nodes.size(); i++){
             if(i+1 == nodes.size()){
-                std::cout<<"       ▲ TAIL";
+                std::cout<<"              ";
+                std::cout<<Color::BG_YELLOW<<"▲ TAIL"<<Color::RESET;
             }else{
                 std::cout<<"                     ";
             }
         }
         std::cout<<"\n\n";
-        std::cout<<"     size: "<<size;
+        std::cout<<Color::BG_BLUE<<"  size: "<<size<<" "<<Color::RESET;
         if(head){
-            std::cout<<" | head→val: "<<head->data;
+            std::cout<<"|";
+            std::cout<<Color::BG_GREEN<<" head→val: "<<head->data<<" "<<Color::RESET;
         }
         if(tail){
-            std::cout<<" | tail→val: "<<tail->data<<" | tail→next: nullptr";
+            std::cout<<"|";
+            std::cout<<Color::BG_CYAN<<" tail→val: "<<tail->data<<" "<<Color::RESET<<"|"<<Color::MAGENTA<<" tail→next: nullptr"<<Color::RESET;
         }
         std::cout<<"\n\n";
     }

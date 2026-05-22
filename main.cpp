@@ -33,12 +33,7 @@ int main(){
     list.deletekey(50);
     list.show();
 
-    
-    
-    
-
-
-    
+    list.visualize();
 
     return 0;
 }
