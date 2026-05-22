@@ -82,8 +82,8 @@ public:
         Node<T>* cur = head;
 
         while(cur != NULL && cur->data != key){
-            prev = curr;
-            curr = curr->next;
+            prev = cur;
+            cur = cur->next;
         }
 
         if(cur == NULL){
@@ -103,6 +103,11 @@ public:
 
 
     void show(){
+        if(head==NULL){
+            std::cout<<"\n";
+            std::cout<<"No element.";
+            std::cout<<"\n";
+        }
         Node<T>* tmp = head;
         std::cout<<"\n";
         while(tmp!=NULL){

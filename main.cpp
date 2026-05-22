@@ -1,23 +1,29 @@
 #include<iostream>
 #include "stackengine.hpp"
 #include "arrayEngine.hpp"
+#include "LinkListEngine.hpp"
 
 int main(){
-    MyArray arr;
     
-    arr.insert_at_first(5);
-    arr.insert_at_last(3);
-    arr.insert_at_last(1);
-    arr.insert_at_last(6);
-    arr.insert_at_last(9);
-
-    VisuArray vv(arr);
-    vv.show();
-
-    SortArray sa(arr);
-    std::cout<<"\n";
-    sa.quick_visu();
-    
+    LinkedList<int> list;
+    list.show();
+    list.insertatbeggining(45);
+    list.show();
+    list.insertatbeggining(34);
+    list.show();
+    list.insertatend(50);
+    list.insertatend(55);
+    list.show();
+    list.insertbefore(34,30);
+    list.show();
+    list.insertafter(55,80);
+    list.show();
+    list.insertafter(34,40);
+    list.insertafter(50,54);
+    list.show();
+    list.insertbefore(34,32);
+    list.insertbefore(80,75);
+    list.show();
     
     
     
