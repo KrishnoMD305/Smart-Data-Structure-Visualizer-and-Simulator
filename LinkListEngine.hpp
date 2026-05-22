@@ -193,4 +193,87 @@ public:
         std::cout<<"\n";
     }
 
+
+    void visualize(){
+        std::cout<<"\n";
+        if(!head){
+            std::cout<<Color::BG_GREEN<<"  HEAD ──► nullptr"<<Color::RESET<<"\n";
+            std::cout<<Color::BG_CYAN<<"  Empty list"<<Color::RESET<<"\n";
+            return;
+        }
+
+        std::vector<Node<T>*> nodes;
+        for(Node<T>* cur = head; cur; cur = cur->next){
+            nodes.push_back(cur);
+        }
+
+        std::cout << "        ";
+        for(auto* n : nodes){
+            std::cout<<std::left<<std::setw(28)<<(void*)n;
+        }
+        std::cout<<"\n";
+
+        std::cout<<"HEAD ──► ";
+        for (int i = 0; i < nodes.size(); i++){
+            std::cout<<"┌────────────────┐";
+            if(i+1 < nodes.size()){
+                std::cout<<" ──► ";
+            }
+        }
+        std::cout << "\n";
+
+        std::cout << "         ";
+        for(int i = 0; i < nodes.size(); i++){
+            std::cout<<"│ data: "<<std::setw(6)<<std::left<<nodes[i]->data<<"   │";
+            if(i+1 < nodes.size()){
+                std::cout<<" ──► ";
+            }
+        }
+        std::cout<<"\n";
+
+        std::cout << "         ";
+        for(int i = 0; i < nodes.size(); i++){
+            std::string nextStr;
+            if(nodes[i]->next){
+                std::ostringstream ss;
+                ss<<(void*)nodes[i]->next;
+                nextStr = ss.str();
+            }else{
+                nextStr = "nullptr";
+            }
+            std::cout<<"│ next: "<<std::left<<std::setw(9)<<nextStr<<"│";
+            if(i+1 < nodes.size()){
+                std::cout<<" ──► ";
+            }
+        }
+        std::cout<<"\n";
+
+        std::cout<<"         ";
+        for(int i = 0; i < nodes.size(); i++){
+            std::cout<<"└────────────────┘";
+            if(i+1 < nodes.size()){
+                std::cout<<"     ";
+            }
+        }
+        std::cout<<"\n";
+
+        std::cout<<"         ";
+        for(int i = 0; i < nodes.size(); i++){
+            if(i+1 == nodes.size()){
+                std::cout<<"       ▲ TAIL";
+            }else{
+                std::cout<<"                     ";
+            }
+        }
+        std::cout<<"\n\n";
+        std::cout<<"     size: "<<size;
+        if(head){
+            std::cout<<" | head→val: "<<head->data;
+        }
+        if(tail){
+            std::cout<<" | tail→val: "<<tail->data<<" | tail→next: nullptr";
+        }
+        std::cout<<"\n\n";
+    }
+
 };
