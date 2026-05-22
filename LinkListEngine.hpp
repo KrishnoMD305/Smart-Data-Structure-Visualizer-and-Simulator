@@ -100,6 +100,82 @@ public:
         size++;
     }
 
+    void deletebegin(){
+        if(head==NULL){
+            std::cout<<"\n";
+            std::cout<<"No elements..";
+            std::cout<<"\n";
+        }
+        Node<T>* tmp = head;
+        head = head->next;
+        if(head==NULL){
+            tail = NULL;
+        }
+        delete tmp;
+        size--;
+    }
+    void deleteend(){
+        if(head==NULL){
+            std::cout<<"\n";
+            std::cout<<"No elements..";
+            std::cout<<"\n";
+        }
+        if(head==tail){
+            delete head;
+            head = NULL;
+            tail = NULL;
+            size--;
+            return;
+        }
+        Node<T>* tmp = head;
+        while(tmp->next!=tail){
+            tmp = tmp->next;
+        }
+        delete tail;
+        tail = tmp;
+        tail->next = NULL;
+        size--;
+    }
+    void deletekey(T key){
+        if(head==NULL){
+            std::cout<<"\n";
+            std::cout<<"No elements..";
+            std::cout<<"\n";
+        }
+
+        if(head->data==key){
+            Node<T>* tmp = head;
+            head = head->next;
+
+            if(head==NULL){
+                tail = NULL;
+            }
+            delete tmp;
+            size--;
+            return;
+        }
+
+        Node<T>* prev = head;
+        Node<T>* curr = head->next;
+        while(curr!=NULL && curr->data!=key){
+            prev = curr;
+            curr = curr->next;
+        }
+        if(curr==NULL){
+            std::cout<<"\n";
+            std::cout<<Color::RED<<"Key Not Found!!"<<Color::RESET;
+            std::cout<<"\n";
+            return;
+        }
+
+        prev->next = curr->next;
+        if(curr==tail){
+            tail = prev;
+        }
+        delete curr;
+        size--;
+    }
+
 
 
     void show(){
