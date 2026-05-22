@@ -250,7 +250,7 @@ public:
             std::cout<<" next: "<<std::left<<std::setw(9)<<nextStr;
             std::cout<<Color::BYELLOW<<"|"<<Color::RESET;
             if(i+1 < nodes.size()){
-                std::cout<<Color::BRED<<" ──► "<<Color::RESET;
+                std::cout<<" ──► ";
             }
         }
         std::cout<<"\n";
