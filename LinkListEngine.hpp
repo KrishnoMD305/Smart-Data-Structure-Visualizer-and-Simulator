@@ -286,4 +286,76 @@ public:
         std::cout<<"\n\n";
     }
 
+    void options(){
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<"insert_at_beginning   ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"insert_at_end \n";
+
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"insert_after_a_given_key   ";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"insert_before_a_given_key \n";
+
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"visualize   ";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"delete_at_beginning   ";
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"delete_at_end \n";
+
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"delete_key \n";
+
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
+    }
+
+    void menubar(){
+        options();
+        std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='8'){
+                break;
+            }
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        if(choice==0){
+            std::cout<<"Enter value to insert: ";
+            T val;
+            std::cin>>val;
+            insertatbeggining(val);
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+            std::cout<<"\n\n";
+            menubar();
+        }else if(choice==1){
+
+        }else if(choice==2){
+            
+        }else if(choice==3){
+            
+        }else if(choice==4){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"VISUALIZER"<<Color::RESET<<" :\n";
+            visualize();
+            std::cout<<"\n\n";
+            menubar();
+        }else if(choice==5){
+            
+        }else if(choice==6){
+            
+        }else if(choice==7){
+            
+        }else if(choice==8){
+            
+        }
+    }
+
+
 };
