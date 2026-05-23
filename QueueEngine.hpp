@@ -2,6 +2,8 @@
 
 #include "colors.hpp"
 #include<iostream>
+#include<iomanip>
+#include<string>
 
 
 template<typename T>
@@ -65,6 +67,13 @@ public:
         std::cout<<"\n\n";
     }
 
+    int len(){
+        if(isEmp()){
+            return 0;
+        }
+        return rear-front+1;
+    }
+
 
     void visualize(){
         if(isEmp()){
@@ -72,9 +81,9 @@ public:
             return;
         }
 
-        int size = 10;
+        int size = len();
 
-        std::cout<<"\n ";
+        std::cout<<"\n  ";
         for(int i=0; i<size; i++){
             std::cout<<"+--------";
         }
@@ -82,7 +91,7 @@ public:
 
         std::cout<<"  ";
         for(int i=front; i<=rear; i++){
-            std::cout<<"| "<<setw(5)<<arr[i]<<"  ";
+            std::cout<<"| "<<std::setw(5)<<arr[i]<<"  ";
         }
         std::cout<<"|\n";
 
