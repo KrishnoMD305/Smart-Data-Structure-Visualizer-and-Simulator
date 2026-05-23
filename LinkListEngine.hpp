@@ -5,6 +5,7 @@
 #include<iomanip>
 #include<sstream>
 #include<string>
+#include<windows.h>
 
 
 template<typename T>
@@ -313,19 +314,22 @@ public:
 
     void menubar(){
         options();
-        std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
         int choice; 
         std::string ch;
         while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
             std::cin>>ch;
             if(ch.size()==1 && ch[0]>='0' && ch[0]<='8'){
                 break;
             }
+            std::cout<<"\n\n\n";
             std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
         }
 
         choice = std::stoi(ch);
+        std::cout<<"\n\n";
         if(choice==0){
+            std::cout<<Color::BG_YELLOW<<"Inserting Value at the Beginning"<<Color::RESET<<"\n\n";
             std::cout<<"Enter value to insert: ";
             T val;
             std::cin>>val;
@@ -335,11 +339,43 @@ public:
             std::cout<<"\n\n";
             menubar();
         }else if(choice==1){
-
+            std::cout<<Color::BG_YELLOW<<"Inserting Value at the End"<<Color::RESET<<"\n\n";
+            std::cout<<"Enter value to insert: ";
+            T val;
+            std::cin>>val;
+            insertatend(val);
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+            std::cout<<"\n\n";
+            menubar();
         }else if(choice==2){
-            
+            std::cout<<Color::BG_YELLOW<<"Inserting Value after a given key"<<Color::RESET<<"\n\n";
+            T val;
+            T target;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>target;
+            std::cout<<"\n";
+            std::cout<<Color::BYELLOW<<"Enter value to insert: "<<Color::RESET;
+            std::cin>>val;
+            insertafter(target,val);
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+            std::cout<<"\n\n";
+            menubar();
         }else if(choice==3){
-            
+            std::cout<<Color::BG_YELLOW<<"Inserting Value before a given key"<<Color::RESET<<"\n\n";
+            T val;
+            T target;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>target;
+            std::cout<<"\n";
+            std::cout<<Color::BYELLOW<<"Enter value to insert: "<<Color::RESET;
+            std::cin>>val;
+            insertbefore(target,val);
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+            std::cout<<"\n\n";
+            menubar();
         }else if(choice==4){
             std::cout<<"\n\n";
             std::cout<<Color::BG_YELLOW<<"VISUALIZER"<<Color::RESET<<" :\n";
@@ -347,13 +383,26 @@ public:
             std::cout<<"\n\n";
             menubar();
         }else if(choice==5){
-            
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting at the beginning"<<Color::RESET<<"\n\n";
+            deletebegin();
+            Sleep(2000);
+            std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
         }else if(choice==6){
-            
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting at the end"<<Color::RESET<<"\n\n";
+            deleteend();
+            Sleep(2000);
+            std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
         }else if(choice==7){
             
         }else if(choice==8){
-            
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Exiting Linked List...."<<Color::RESET;
+            std::cout<<"\n\n";
+            Sleep(2000);
+            return;
+
         }
     }
 
