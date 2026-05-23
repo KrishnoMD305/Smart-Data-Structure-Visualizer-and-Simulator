@@ -388,14 +388,28 @@ public:
             deletebegin();
             Sleep(2000);
             std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
+            menubar();
         }else if(choice==6){
             std::cout<<"\n\n";
             std::cout<<Color::BG_YELLOW<<"Deleting at the end"<<Color::RESET<<"\n\n";
             deleteend();
             Sleep(2000);
             std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
+            menubar();
         }else if(choice==7){
-            
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting key"<<Color::RESET<<"\n\n";
+            std::cout<<"\n\n";
+            T key;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>key;
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting..."<<Color::RESET<<"\n\n";
+            deletekey(key);
+            Sleep(2000);
+            std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
+            menubar();
+
         }else if(choice==8){
             std::cout<<"\n\n";
             std::cout<<Color::BG_RED<<"Exiting Linked List...."<<Color::RESET;
