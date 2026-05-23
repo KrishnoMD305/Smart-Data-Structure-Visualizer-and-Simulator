@@ -6,7 +6,8 @@
 #include "QueueEngine.hpp"
 
 int main(){
-    
+    Que<int> q;
+    q.menubar();
     
     return 0;
 }
