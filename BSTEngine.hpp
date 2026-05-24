@@ -81,6 +81,35 @@ class BST{
         return r;
     }
 
+    void inordr_pri(Node* r){
+        if(r == nullptr){
+            return;
+        }  
+        inorder(r->left);
+        cout << r->data << " ";
+        inorder(r->right);
+    }
+    void preordr_pri(Node* r){
+        if(r==nullptr){
+            return;
+        }
+        cout << r->data << " ";
+        preorder(r->left);
+        preorder(r->right);
+    }
+    void postordr_pri(Node* r){
+        if(r==nullptr){
+            return;
+        }
+        postorder(r->left);
+        postorder(r->right);
+        cout << r->data << " ";
+    }
+
+
+
+
+public:
 
 
 };
