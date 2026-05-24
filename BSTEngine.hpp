@@ -137,6 +137,15 @@ public:
     }
     void remove(T key){
         root = remove_pri(root,key);
+        if(root==nullptr){
+            std::cout<<"\n\n";
+            std::cout<<Color::RED<<"Key Not Found!!"<<Color::RESET;
+            std::cout<<"\n\n";
+        }else{
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Deleted Successfully"<<Color::RESET;
+            std::cout<<"\n\n";
+        }
     }
 
     bool search(T key){
@@ -144,17 +153,35 @@ public:
     }
 
     void inorder(){
+        if(root==nullptr){
+            std::cout<<Color::MAGENTA<<"Tree is empty"<<Color::RESET;
+            std::cout<<"\n";
+            return;
+        }
         std::cout<<"\n";
+        std::cout<<"Inorder: ";
         inordr_pri(root);
         std::cout<<"\n";
     }
     void preorder(){
+        if(root==nullptr){
+            std::cout<<Color::MAGENTA<<"Tree is empty"<<Color::RESET;
+            std::cout<<"\n";
+            return;
+        }
         std::cout<<"\n";
+        std::cout<<"Preorder: ";
         preordr_pri(root);
         std::cout<<"\n";
     }
     void postorder(){
+        if(root==nullptr){
+            std::cout<<Color::MAGENTA<<"Tree is empty"<<Color::RESET;
+            std::cout<<"\n";
+            return;
+        }
         std::cout<<"\n";
+        std::cout<<"Postorder: ";
         postordr_pri(root);
         std::cout<<"\n";
     }
@@ -288,10 +315,12 @@ public:
         std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
         std::cout<<" Visualize ";
         std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
-        std::cout<<" Inorder Simulation \n";
-
+        std::cout<<" Inorder Simulation ";
         std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
-        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
+        std::cout<<" Search \n";
+
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET<<"\n";
         std::cout<<"\n\n";
     }
 
@@ -302,7 +331,7 @@ public:
         while(true){
             std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
             std::cin>>ch;
-            if(ch.size()==1 && ch[0]>='0' && ch[0]<='7'){
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='8'){
                 break;
             }
             std::cout<<"\n\n\n";
@@ -316,21 +345,52 @@ public:
             std::cout<<Color::BG_YELLOW<<"Value Insertion in BST"<<Color::RESET<<"\n\n";
             std::cout<<"Enter value to insert: ";
             T val;
+            std::cin>>val;
             insert(val);
-            menubar()
+            menubar();
         }else if(choice==1){
-
+            std::cout<<Color::BG_YELLOW<<"Value Deletion From BST"<<Color::RESET<<"\n\n";
+            std::cout<<"Enter key to remove: ";
+            T key;
+            std::cin>>key;
+            remove(key);
+            menubar();
         }else if(choice==2){
-            
+            std::cout<<"\n";
+            inorder();
+            std::cout<<"\n\n";
+            menubar();
         }else if(choice==3){
-            
+            std::cout<<"\n";
+            preorder();
+            std::cout<<"\n\n";
+            menubar();
         }else if(choice==4){
-            
+            std::cout<<"\n";
+            postorder();
+            std::cout<<"\n\n";
+            menubar();
         }else if(choice==5){
-            
+            std::cout<<Color::BG_YELLOW<<"BST Visualizer"<<Color::RESET<<"\n\n";
+            visualize();
+            menubar();
         }else if(choice==6){
-            
+            std::cout<<Color::BG_YELLOW<<"Inorder Simulation"<<Color::RESET<<"\n\n";
+            inorderSimulator();
+            menubar();
         }else if(choice==7){
+            std::cout<<Color::BG_YELLOW<<"Searching Key"<<Color::RESET<<"\n\n";
+            std::cout<<"Enter key to search: ";
+            T key;
+            std::cin>>key;
+            if(search(key)){
+                std::cout<<Color::BGREEN<<"Key is Found."<<Color::RESET;
+            }else{
+                std::cout<<Color::BG_RED<<"Key is not found"<<Color::RESET;
+            }
+            std::cout<<"\n\n";
+            menubar();
+        }else if(choice==8){
             std::cout<<"\n\n";
             std::cout<<Color::BG_RED<<"Exiting BST...."<<Color::RESET;
             std::cout<<"\n\n";
