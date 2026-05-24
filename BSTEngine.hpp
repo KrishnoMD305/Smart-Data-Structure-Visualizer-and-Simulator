@@ -3,6 +3,8 @@
 #include<iostream>
 #include "colors.hpp"
 #include<string>
+#include<vector>
+#include<algorithm>
 
 template<typename T>
 class Noda{
@@ -177,6 +179,73 @@ public:
         std::cout<<"        ["<<root->data<<"]\n";
         print_tr(root->left,"        ",false);
         std::cout<<"\n\n";
+    }
+
+    void print_sim(Noda<T>* node,const vector<int>& visited,int cur,std::string ind,bool isR){
+        if(!Noda){
+            return;
+        }
+
+        print_sim(node->right,visited,cur,ind+(isR?"        ":"│       "),true);
+
+        std::string color; 
+        if(node->data==cur){
+            color = Color::BYELLOW;
+        }else if(std::find(visited.begin(),visited.end(),node->data)!=visited.end()){
+            color = Color::BGREEN;
+        }else{
+            color = Color::DIM;
+        }
+
+        std::cout<<ind;
+        std::cout<<(isR?"┌───────":"└───────");
+        std::cout<<color<<"["<<node->data<<"]"<<Color::RESET<<"\n";
+
+        print_sim(node->left,visited,cur,ind+(isR?"│       ":"        "),false);
+    }
+    void show(const vector<int>& visited,int cur){
+        if(!root){
+            std::cout<<"Tree is Empty\n";
+            return;
+        }
+        print_sim(root->right,visited,cur,"        ",true);
+
+        std::string color; 
+        if(root->data==cur){
+            color = Color::BYELLOW;
+        }else if(std::find(visited.begin(),visited.end(),root->data)!=visited.end()){
+            color = Color::BGREEN;
+        }else{
+            color = Color::DIM;
+        }
+
+        std::cout<<"        "<<color<<"["<<root->data<<"]"<<Color::RESET<<"\n";
+        print_sim(root->left,visited,cur,"        ",false);
+        std::cout<<"\n";
+    }
+
+    void simulator(Noda<T>* node,vector<int>& visited){
+        if(!node){
+            return;
+        }
+        simulator(node->left,visited);
+
+        std::cout<<"\n\n";
+        std::cout<<"  Inorder Traversal — Step by step\n";
+        std::cout<<"  ──────────────────────────────────\n";
+        std::cout<<"  "<<Color::BYELLOW<<"■ visiting now  "<<Color::RESET<<Color::BGREEN<<"■ visited  "<<Color::RESET<<Color::DIM<<"■ pending"<<Color::RESET<<"\n\n";
+
+        show(visited,node->data);
+
+        std::cout<<"  Visited : ";
+        for(int v : visited){
+            std::cout<<Color::BGREEN<<v<<Color::RESET<<" ";
+        }
+        if(visited.empty()){
+            std::cout<<"(none)";
+        }
+
+        std::cout<<"\n  Now     : "<<Color::BYELLOW<<node->data<<Color::RESET<<"\n\n";
     }
 
 };
