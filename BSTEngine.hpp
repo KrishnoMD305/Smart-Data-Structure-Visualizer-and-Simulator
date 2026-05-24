@@ -5,6 +5,7 @@
 #include<string>
 #include<vector>
 #include<algorithm>
+#include<windows.h>
 
 template<typename T>
 class Noda{
@@ -181,8 +182,8 @@ public:
         std::cout<<"\n\n";
     }
 
-    void print_sim(Noda<T>* node,const vector<int>& visited,int cur,std::string ind,bool isR){
-        if(!Noda){
+    void print_sim(Noda<T>* node,const std::vector<int>& visited,int cur,std::string ind,bool isR){
+        if(!node){
             return;
         }
 
@@ -203,7 +204,7 @@ public:
 
         print_sim(node->left,visited,cur,ind+(isR?"│       ":"        "),false);
     }
-    void show(const vector<int>& visited,int cur){
+    void show(const std::vector<int>& visited,int cur){
         if(!root){
             std::cout<<"Tree is Empty\n";
             return;
@@ -224,7 +225,7 @@ public:
         std::cout<<"\n";
     }
 
-    void simulator(Noda<T>* node,vector<int>& visited){
+    void simulator(Noda<T>* node,std::vector<int>& visited){
         if(!node){
             return;
         }
@@ -246,6 +247,25 @@ public:
         }
 
         std::cout<<"\n  Now     : "<<Color::BYELLOW<<node->data<<Color::RESET<<"\n\n";
+        Sleep(3000);
+        visited.push_back(node->data);
+
+        simulator(node->right,visited);
+    }
+
+    void inorderSimulator(){
+        std::vector<int> visited;
+        simulator(root,visited);
+
+        std::cout<<"\n\n";
+        std::cout<<"  Inorder Traversal — Complete!\n";
+        std::cout<<"  ────────────────────────────────\n\n";
+        show(visited, -1);
+        std::cout<<"  Result : ";
+        for (int v : visited){
+            std::cout<<Color::BGREEN<<v<<Color::RESET<<"  ";
+        } 
+        std::cout<<"\n\n";
     }
 
 };

@@ -8,14 +8,18 @@
 
 int main(){
     BST<int> b;
-    b.visualize();
-    b.insert(6);
+    b.insert(50);
+    b.insert(30);
+    b.insert(70);
     b.insert(10);
+    b.insert(40);
+    b.insert(60);
+    b.insert(80);
     b.insert(5);
+    b.insert(20);
+    b.insert(40);
+    b.insert(35);
     b.visualize();
-    b.remove(45);
-    b.visualize();
-    b.remove(6);
-    b.visualize();
+    b.inorderSimulator();
     return 0;
 }
