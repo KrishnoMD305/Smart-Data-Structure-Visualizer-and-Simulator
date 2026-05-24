@@ -131,6 +131,9 @@ public:
     
     void insert(T val){
         root = in_private(root,val);
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"Value Inserted Successfully"<<Color::RESET;
+        std::cout<<"\n\n";
     }
     void remove(T key){
         root = remove_pri(root,key);
@@ -266,6 +269,74 @@ public:
             std::cout<<Color::BGREEN<<v<<Color::RESET<<"  ";
         } 
         std::cout<<"\n\n";
+    }
+
+    void options(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<" Insert ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<" Delete \n";
+
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<" Inorder ";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<" Preorder ";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<" Postorder \n";
+
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<" Visualize ";
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<" Inorder Simulation \n";
+
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
+        std::cout<<"\n\n";
+    }
+
+    void menubar(){
+        options();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='7'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==0){
+            std::cout<<Color::BG_YELLOW<<"Value Insertion in BST"<<Color::RESET<<"\n\n";
+            std::cout<<"Enter value to insert: ";
+            T val;
+            insert(val);
+            menubar()
+        }else if(choice==1){
+
+        }else if(choice==2){
+            
+        }else if(choice==3){
+            
+        }else if(choice==4){
+            
+        }else if(choice==5){
+            
+        }else if(choice==6){
+            
+        }else if(choice==7){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Exiting BST...."<<Color::RESET;
+            std::cout<<"\n\n";
+            Sleep(2000);
+            return;
+        }
     }
 
 };
