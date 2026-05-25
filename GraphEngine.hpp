@@ -4,6 +4,7 @@
 #include<vector>
 #include<unordered_map>
 #include<queue>
+#include "colors.hpp"
 
 template<typename T>
 class Graphical{
@@ -39,11 +40,11 @@ public:
         std::queue<T> q;
         visited[start] = true;
         q.push(start);
-
+        std::cout<<Color::GREEN<<"BFS"<<Color::RESET<<" : ";
         while(!q.empty()){
             T node = q.front();
             q.pop();
-            std::cout<<node<<" ";
+            std::cout<<Color::BMAGENTA<<node<<Color::RESET<<" ";
 
             for(T nei : adjacency[node]){
                 if(!visited[nei]){
@@ -58,7 +59,7 @@ public:
 
     void dfshelper(T node, std::unordered_map<T,bool>& visited){
         visited[node] = true;
-        std::cout<<node<<" ";
+        std::cout<<Color::BMAGENTA<<node<<Color::RESET<<" ";
 
         for(T nei : adjacency[node]){
             if(!visited[nei]){
@@ -69,6 +70,7 @@ public:
     void DFStraverse(T start){
         std::cout<<"\n\n";
         std::unordered_map<T,bool> visited;
+        std::cout<<Color::GREEN<<"BFS"<<Color::RESET<<" : ";
         dfshelper(start,visited);
         std::cout<<"\n\n";
     }
@@ -86,6 +88,19 @@ public:
             }
         }
         re[node] = false;
+        return false;
+    }
+    bool isCyclic(){
+        unordered_map<T,bool> visited;
+        unordered_map<T,bool> re;
+
+        for (auto pair : adj) {
+            T node = pair.first;
+            if(!visited[node]){
+                if(cycleDFS(node,visited,re))
+                    return true;
+            }
+        }
         return false;
     }
 
@@ -114,6 +129,59 @@ public:
         std::cout<<Color::BRED<<" EXIT "<<Color::RESET<<"\n";
     }
 
-    
+    void menu(){
+        options();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='4'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==0){
+            std::cout<<Color::BG_GREEN<<"Adjacency List"<<Color::RESET;
+            std::cout<<" : \n";
+            printgraph();
+            std::cout<<"\n\n";
+            menu();
+        }else if(choice==1){
+            std::cout<<Color::BG_YELLOW<<"BFS Traversal"<<Color::RESET<<"\n\n";
+            T nod; 
+            std::cout<<"Enter start node : ";
+            std::cin>>nod;
+            BFStraverse(nod);
+            std::cout<<"\n\n";
+            menu();
+        }else if(choice==2){
+            std::cout<<Color::BG_YELLOW<<"DFS Traversal"<<Color::RESET<<"\n\n";
+            T nod; 
+            std::cout<<"Enter start node : ";
+            std::cin>>nod;
+            DFStraverse(nod);
+            std::cout<<"\n\n";
+            menu();
+        }else if(choice==3){
+            std::cout<<Color::BG_YELLOW<<"Cycle Detection"<<Color::RESET<<"\n\n";
+            if(isCyclic()){
+                std::cout<<Color::BG_GREEN<<"Cycle is Detected"<<Color::RESET<<"\n\n";
+            }else{
+                std::cout<<Color::RED<<"There is no cycle"<<Color::RESET<<"\n\n";
+            }
+
+        }else if(choice==4){
+            std::cout<<"\n\n";
+            return;
+        }
+    }
+
+
 
 };
