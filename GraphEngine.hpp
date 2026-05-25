@@ -4,6 +4,7 @@
 #include<vector>
 #include<unordered_map>
 #include<queue>
+#include<algorithm>
 #include "colors.hpp"
 
 template<typename T>
@@ -104,6 +105,29 @@ public:
         return false;
     }
 
+    void topohelper(T node,std::unordered_map<T,bool> &visited,std::vector<T>& res){
+        visited[node] = true;
+        for(T nei : adjacency[node]){
+            if(!visited[nei]){
+                topohelper(nei,visited,res);
+            }
+        }
+        res.push_back(node);
+    }
+    std::vector<T> topoSort(){
+        std::unordered_map<T,bool> visited;
+        std::vector<T> res;
+
+        for(auto pair : adjacency){
+            T node = pair.first;
+            if(!visited[node]){
+                topohelper(node,visited,res);
+            }
+        }
+        std::reverse(res.begin(),res.end());
+        return res;
+    }
+
     void GraphOptions(){
         std::cout<<"\n\n";
         std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
@@ -127,6 +151,90 @@ public:
         std::cout<<"CycleDetection\n";
         std::cout<<Color::BMAGENTA<<"[4] "<<Color::RESET;
         std::cout<<Color::BRED<<" EXIT "<<Color::RESET<<"\n";
+    }
+
+    void optionsDirect(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0] "<<Color::RESET;
+        std::cout<<"Show\n";
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<"BFSTraverse\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<"DFSTraverse\n";
+        std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
+        std::cout<<"CycleDetection\n";
+        std::cout<<Color::BMAGENTA<<"[4] "<<Color::RESET;
+        std::cout<<"Topological Sort\n";
+        std::cout<<Color::BMAGENTA<<"[5] "<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET<<"\n";
+    }
+
+    void directMenu(){
+        optionsDirect();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='5'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==0){
+            std::cout<<Color::BG_GREEN<<"Adjacency List"<<Color::RESET;
+            std::cout<<" : \n";
+            printgraph();
+            std::cout<<"\n\n";
+            directMenu();
+        }else if(choice==1){
+            std::cout<<Color::BG_YELLOW<<"BFS Traversal"<<Color::RESET<<"\n\n";
+            T nod; 
+            std::cout<<"Enter start node : ";
+            std::cin>>nod;
+            BFStraverse(nod);
+            std::cout<<"\n\n";
+            directMenu();
+        }else if(choice==2){
+            std::cout<<Color::BG_YELLOW<<"DFS Traversal"<<Color::RESET<<"\n\n";
+            T nod; 
+            std::cout<<"Enter start node : ";
+            std::cin>>nod;
+            DFStraverse(nod);
+            std::cout<<"\n\n";
+            directMenu();
+        }else if(choice==3){
+            std::cout<<Color::BG_YELLOW<<"Cycle Detection"<<Color::RESET<<"\n\n";
+            if(isCyclic()){
+                std::cout<<Color::BG_GREEN<<"Cycle is Detected"<<Color::RESET<<"\n\n";
+            }else{
+                std::cout<<Color::RED<<"There is no cycle"<<Color::RESET<<"\n\n";
+            }
+            directMenu();
+        }else if(choice==4){
+            std::cout<<Color::BG_YELLOW<<"Topological Sort"<<Color::RESET<<"\n\n";
+            if(isCyclic()){
+                std::cout<<Color::BG_RED<<"Cycle is Detected"<<Color::RESET<<"\n";
+                std::cout<<Color::GREEN<<"Graph should be ACYCLIC for topological sort"<<Color::RESET<<"\n\n";
+            }else{
+                std::vector<T> sorted = topoSort();
+                std::cout<<Color::BBLUE<<"Sorted"<<Color::RESET<<" : ";
+                for(T nd : sorted){
+                    std::cout<<Color::MAGENTA<<nd<<Color::RESET<<" ";
+                }
+                std::cout<<"\n\n";
+            }
+            directMenu();
+        }else if(choice==5){
+            std::cout<<"\n\n";
+            adjacency.clear();
+            return;
+        }
     }
 
     void menu(){
@@ -212,7 +320,7 @@ public:
                 adddirect(u,v);
             }
             std::cout<<"\n"<<Color::BG_GREEN<<"Insertion Complete"<<Color::RESET<<"\n\n";
-            menu();
+            directMenu();
             menubar();
         }else if(choice==2){
             std::cout<<Color::BG_YELLOW<<"Uudirected Graph Insertion"<<Color::RESET<<"\n\n";
