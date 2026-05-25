@@ -5,9 +5,10 @@
 #include "LinkListEngine.hpp"
 #include "QueueEngine.hpp"
 #include "BSTEngine.hpp"
+#include "GraphEngine.hpp"
 
 int main(){
-    BST<int> b;
-    b.menubar();
+    Graphical<int> g;
+    g.menubar();
     return 0;
 }

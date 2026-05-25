@@ -91,10 +91,10 @@ public:
         return false;
     }
     bool isCyclic(){
-        unordered_map<T,bool> visited;
-        unordered_map<T,bool> re;
+        std::unordered_map<T,bool> visited;
+        std::unordered_map<T,bool> re;
 
-        for (auto pair : adj) {
+        for (auto pair : adjacency) {
             T node = pair.first;
             if(!visited[node]){
                 if(cycleDFS(node,visited,re))
@@ -175,13 +175,66 @@ public:
             }else{
                 std::cout<<Color::RED<<"There is no cycle"<<Color::RESET<<"\n\n";
             }
-
+            menu();
         }else if(choice==4){
             std::cout<<"\n\n";
+            adjacency.clear();
             return;
         }
     }
 
 
+    void menubar(){
+        GraphOptions();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='1' && ch[0]<='3'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==1){
+            std::cout<<Color::BG_YELLOW<<"Directed Graph Insertion"<<Color::RESET<<"\n\n";
+            T nd; int edg;
+            std::cout<<"Enter the number of edges :";
+            std::cin>>edg;
+            std::cout<<"\n\nEnter the edges: \n";
+            for(int i=0; i<edg; i++){
+                T u,v; std::cin>>u>>v;
+                adddirect(u,v);
+            }
+            std::cout<<"\n"<<Color::BG_GREEN<<"Insertion Complete"<<Color::RESET<<"\n\n";
+            menu();
+            menubar();
+        }else if(choice==2){
+            std::cout<<Color::BG_YELLOW<<"Uudirected Graph Insertion"<<Color::RESET<<"\n\n";
+            T nd; int edg;
+            std::cout<<"Enter the number of edges :";
+            std::cin>>edg;
+            std::cout<<"\n\nEnter the edges: \n";
+            for(int i=0; i<edg; i++){
+                T u,v; std::cin>>u>>v;
+                addundirected(u,v);
+            }
+            std::cout<<"\n"<<Color::BG_GREEN<<"Insertion Complete"<<Color::RESET<<"\n\n";
+            menu();
+            menubar();
+        }else if(choice==3){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Exiting Graph...."<<Color::RESET;
+            std::cout<<"\n\n";
+            Sleep(2000);
+            return;
+        }
+
+    }
 
 };
