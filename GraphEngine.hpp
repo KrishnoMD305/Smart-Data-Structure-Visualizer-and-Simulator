@@ -90,8 +90,30 @@ public:
     }
 
     void GraphOptions(){
-        
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<"Directed Graph\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<"UNDirected Graph\n";
+        std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
+        std::cout<<"Exit";
+        std::cout<<"\n\n";
     }
 
+    void options(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0] "<<Color::RESET;
+        std::cout<<"Show\n";
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<"BFSTraverse\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<"DFSTraverse\n";
+        std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
+        std::cout<<"CycleDetection\n";
+        std::cout<<Color::BMAGENTA<<"[4] "<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET<<"\n";
+    }
+
+    
 
 };
