@@ -221,6 +221,26 @@ public:
 
     void optionsMM(){
         std::cout<<Color::BG_CYAN<<"Choose one to continue..."<<Color::RESET<<"\n\n";
-        
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<"Max Heap\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<"Min Heap\n";
+        std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
+        std::cout<<Color::BRED<<"Exit"<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+    void option(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Insert "<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Remove "<<Color::RESET<<"\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Visualization "<<Color::RESET<<"\n";
+        std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Heap Sort "<<Color::RESET<<"\n";
+        std::cout<<Color::BMAGENTA<<"[4] "<<Color::RESET;
+        std::cout<<Color::BRED<<"Exit "<<Color::RESET;
     }
 };
