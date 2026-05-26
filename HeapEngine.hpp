@@ -3,6 +3,7 @@
 #include<iostream>
 #include<vector>
 #include "colors.hpp"
+#include<windows.h>
 
 template<typename T>
 class Heaap{
@@ -281,9 +282,111 @@ public:
             visualize();
             menuMax();
         }else if(choice==3){
-            
+            std::cout<<Color::BG_YELLOW<<"Heap Sort"<<Color::RESET<<"\n\n";
+            std::vector<T> sortedAsc = heapsortasc();
+            std::vector<T> sortedDsc = heapsortdesc();
+            std::cout<<Color::BYELLOW<<"Ascending : "<<Color::RESET;
+            for(T i : sortedAsc){
+                std::cout<<Color::MAGENTA<<i<<Color::RESET<<" ";
+            }
+            std::cout<<"\n\n";
+            std::cout<<Color::BYELLOW<<"Descending : "<<Color::RESET;
+            for(T i : sortedDsc){
+                std::cout<<Color::MAGENTA<<i<<Color::RESET<<" ";
+            }
+            std::cout<<"\n\n";
+            menuMax();
         }else if(choice==4){
-            
+            heap.clear();
+            std::cout<<"\n\n";
+            return;
+        }
+    }
+    void menuMin(){
+        option();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='4'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==0){
+            std::cout<<Color::BG_YELLOW<<"Value Insertion"<<Color::RESET<<"\n\n";
+            std::cout<<Color::BGREEN<<"Enter value to Insert : ";
+            T val;
+            std::cin>>val;
+            insertMin(val);
+            menuMin();
+        }else if(choice==1){
+            std::cout<<Color::BG_YELLOW<<"Root Removal"<<Color::RESET<<"\n\n";
+            remove(false);
+            menuMin();
+        }else if(choice==2){
+            std::cout<<Color::BG_YELLOW<<"Heap Visualization"<<Color::RESET<<"\n\n";
+            visualize();
+            menuMin();
+        }else if(choice==3){
+            std::cout<<Color::BG_YELLOW<<"Heap Sort"<<Color::RESET<<"\n\n";
+            std::vector<T> sortedAsc = heapsortasc();
+            std::vector<T> sortedDsc = heapsortdesc();
+            std::cout<<Color::BYELLOW<<"Ascending : "<<Color::RESET;
+            for(T i : sortedAsc){
+                std::cout<<Color::MAGENTA<<i<<Color::RESET<<" ";
+            }
+            std::cout<<"\n\n";
+            std::cout<<Color::BYELLOW<<"Descending : "<<Color::RESET;
+            for(T i : sortedDsc){
+                std::cout<<Color::MAGENTA<<i<<Color::RESET<<" ";
+            }
+            std::cout<<"\n\n";
+            menuMin();
+        }else if(choice==4){
+            heap.clear();
+            std::cout<<"\n\n";
+            return;
+        }
+    }
+
+    void menubar(){
+        optionsMM();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='1' && ch[0]<='3'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==1){
+            std::cout<<Color::BCYAN<<"Max Heap"<<Color::RESET<<"\n\n";
+            menuMax();
+            menubar();
+        }else if(choice==2){
+            std::cout<<Color::BCYAN<<"Min Heap"<<Color::RESET<<"\n\n";
+            menuMin();
+            menubar();
+        }else if(choice==3){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Exiting Heap...."<<Color::RESET;
+            std::cout<<"\n\n";
+            Sleep(2000);
+            return;
         }
     }
 };
