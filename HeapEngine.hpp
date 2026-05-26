@@ -75,6 +75,8 @@ public:
     void insertMax(T val){
         heap.push_back(val);
         heapifyUMax(heap.size()-1);
+        std::cout<<"\n\n";
+        std::cout<<Color::BG_GREEN<<"Value inserted successfully"<<Color::RESET<<"\n\n";
     }
     void insertMin(T val){
         heap.push_back(val);
@@ -83,7 +85,7 @@ public:
 
     void remove(bool isMax){
         if(heap.empty()){
-            std::cout<<"Heap is empty"<<"\n";
+            std::cout<<Color::BRED<<"Heap is empty"<<Color::RESET<<"\n";
             return;
         }
         heap[0] = heap.back();
@@ -95,6 +97,8 @@ public:
                 heapifyDMin(0);
             }
         }
+        std::cout<<"\n\n";
+        std::cout<<Color::BG_RED<<"Root removed successfully"<<Color::RESET<<"\n\n";
     }
 
     std::vector<T> heapsortasc(){
@@ -212,7 +216,7 @@ public:
     }
     void visualize(){
         if(heap.empty()){
-            std::cout<<"Heap is Empty"<<"\n";
+            std::cout<<Color::BRED<<"Heap is Empty"<<Color::RESET<<"\n";
             return;
         }
         printtree();
@@ -242,5 +246,44 @@ public:
         std::cout<<Color::BBLUE<<"Heap Sort "<<Color::RESET<<"\n";
         std::cout<<Color::BMAGENTA<<"[4] "<<Color::RESET;
         std::cout<<Color::BRED<<"Exit "<<Color::RESET;
+    }
+
+    void menuMax(){
+        option();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='4'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==0){
+            std::cout<<Color::BG_YELLOW<<"Value Insertion"<<Color::RESET<<"\n\n";
+            std::cout<<Color::BGREEN<<"Enter value to Insert : ";
+            T val;
+            std::cin>>val;
+            insertMax(val);
+            menuMax();
+        }else if(choice==1){
+            std::cout<<Color::BG_YELLOW<<"Root Removal"<<Color::RESET<<"\n\n";
+            remove(true);
+            menuMax();
+        }else if(choice==2){
+            std::cout<<Color::BG_YELLOW<<"Heap Visualization"<<Color::RESET<<"\n\n";
+            visualize();
+            menuMax();
+        }else if(choice==3){
+            
+        }else if(choice==4){
+            
+        }
     }
 };
