@@ -246,7 +246,7 @@ public:
         std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
         std::cout<<Color::BBLUE<<"Heap Sort "<<Color::RESET<<"\n";
         std::cout<<Color::BMAGENTA<<"[4] "<<Color::RESET;
-        std::cout<<Color::BRED<<"Exit "<<Color::RESET;
+        std::cout<<Color::BRED<<"Exit "<<Color::RESET<<"\n\n";
     }
 
     void menuMax(){
@@ -283,6 +283,10 @@ public:
             menuMax();
         }else if(choice==3){
             std::cout<<Color::BG_YELLOW<<"Heap Sort"<<Color::RESET<<"\n\n";
+            if(heap.empty()){
+                std::cout<<Color::BRED<<"Heap is empty"<<Color::RESET<<"\n";
+                menuMax();
+            }
             std::vector<T> sortedAsc = heapsortasc();
             std::vector<T> sortedDsc = heapsortdesc();
             std::cout<<Color::BYELLOW<<"Ascending : "<<Color::RESET;
@@ -336,6 +340,10 @@ public:
             menuMin();
         }else if(choice==3){
             std::cout<<Color::BG_YELLOW<<"Heap Sort"<<Color::RESET<<"\n\n";
+            if(heap.empty()){
+                std::cout<<Color::BRED<<"Heap is empty"<<Color::RESET<<"\n";
+                menuMin();
+            }
             std::vector<T> sortedAsc = heapsortasc();
             std::vector<T> sortedDsc = heapsortdesc();
             std::cout<<Color::BYELLOW<<"Ascending : "<<Color::RESET;

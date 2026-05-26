@@ -6,9 +6,9 @@
 #include "QueueEngine.hpp"
 #include "BSTEngine.hpp"
 #include "GraphEngine.hpp"
+#include "HeapEngine.hpp"
 
 int main(){
-    Graphical<int> g;
-    g.menubar();
+    
     return 0;
 }
