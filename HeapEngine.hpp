@@ -218,4 +218,9 @@ public:
         printtree();
         std::cout<<"\n\n";
     }
+
+    void optionsMM(){
+        std::cout<<Color::BG_CYAN<<"Choose one to continue..."<<Color::RESET<<"\n\n";
+        
+    }
 };
