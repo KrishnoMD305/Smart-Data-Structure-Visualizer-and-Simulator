@@ -92,14 +92,24 @@ public:
         std::stack<char> st;
         std::string postfix = "";
 
-        for(char ch : inf){
-            if(isalnum(ch)){
+        for(int i=0; i<inf.size(); i++){
+            char ch = inf[i];
+            if(ch == ' ') continue;
+            if(isdigit(ch)){
+                while(i < inf.size() && isdigit(inf[i])){
+                    postfix += inf[i++];
+                }
+                postfix += ' ';
+                i--;
+            }else if(isalpha(ch)){
                 postfix += ch;
+                postfix += ' ';
             }else if(ch=='('){
                 st.push(ch);
             }else if(ch==')'){
                 while(!st.empty() && st.top()!='('){
                     postfix += st.top();
+                    postfix += ' ';
                     st.pop();
                 }
                 if(!st.empty()){
@@ -108,6 +118,7 @@ public:
             }else if(isOprtr(ch)){
                 while(!st.empty() && (precedence(st.top())>=precedence(ch))){
                     postfix += st.top();
+                    postfix += ' ';
                     st.pop();
                 }
                 st.push(ch);
@@ -116,6 +127,7 @@ public:
 
         while(!st.empty()){
             postfix += st.top();
+            postfix += ' ';
             st.pop();
         }
 
@@ -136,14 +148,27 @@ public:
         std::stack<char> st;
         std::string prefix = "";
 
-        for(char ch : exp){
-            if(isalnum(ch)){
+        for(int i=0; i<exp.size(); i++){
+            char ch = exp[i];
+            if(ch == ' ') continue;
+            if(isdigit(ch)){
+                std::string num = "";
+                while(i < exp.size() && isdigit(exp[i])){
+                    num += exp[i++];
+                }
+                i--;
+                std::reverse(num.begin(), num.end());
+                prefix += num;
+                prefix += ' ';
+            }else if(isalpha(ch)){
                 prefix += ch;
+                prefix += ' ';
             }else if(ch=='('){
                 st.push(ch);
             }else if(ch==')'){
                 while(!st.empty() && st.top()!='('){
                     prefix += st.top();
+                    prefix += ' ';
                     st.pop();
                 }
                 if(!st.empty()){
@@ -152,18 +177,26 @@ public:
             }else if(isOprtr(ch)){
                 while(!st.empty() && (precedence(st.top())>=precedence(ch))){
                     prefix += st.top();
+                    prefix += ' ';
                     st.pop();
                 }
                 st.push(ch);
             }
         }
-
         while(!st.empty()){
             prefix += st.top();
+            prefix += ' ';
             st.pop();
         }
-        std::reverse(prefix.begin(),prefix.end());
-        return prefix;
+        std::reverse(prefix.begin(), prefix.end());
+        std::string fixed = "";
+        std::stringstream ss(prefix);
+        std::string tok;
+        while(ss >> tok){
+            std::reverse(tok.begin(), tok.end());
+            fixed += tok + ' ';
+        }
+        return fixed;
     }
 
     double operation(double a,double b,char op){
@@ -216,6 +249,7 @@ public:
                 double b = st.top();
                 st.pop();
                 double res = operation(a,b,tok[0]);
+                st.push(res);
             }else{
                 double num = std::stod(tok);
                 st.push(num);
@@ -322,16 +356,17 @@ public:
         if(choice==1){
             std::cout<<Color::BOLD<<"Enter Infix Expression : "<<Color::RESET;
             std::string str; 
-            std::cin>>str;
+            std::cin.ignore();
+            std::getline(std::cin,str);
             inf = str;
             std::cout<<"\n\n";
             if(!isValid()){
                 std::cout<<Color::BG_YELLOW<<"Expression is not valid."<<Color::RESET;
                 std::cout<<"\n\n";
-                mainoption();
+                menu();
             }else{
                 menubar();
-                mainoption();
+                menu();
             }
         }else if(choice==2){
             std::cout<<"\n\n";
