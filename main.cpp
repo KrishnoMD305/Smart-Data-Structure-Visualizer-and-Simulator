@@ -10,7 +10,6 @@
 #include "Evaluation.hpp"
 
 int main(){
-    Evaluation e; 
-    e.menu();
+    
     return 0;
 }
