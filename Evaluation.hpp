@@ -5,6 +5,7 @@
 #include<sstream>
 #include<cmath>
 #include "colors.hpp"
+#include<windows.h>
 
 class Evaluation{
     std::string inf;
@@ -221,5 +222,123 @@ public:
             }
         }
         return st.top();
+    }
+
+    void option(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Convert to Postfix "<<Color::RESET<<"\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Convert to Prefix "<<Color::RESET<<"\n";
+        std::cout<<Color::BMAGENTA<<"[3] "<<Color::RESET;
+        std::cout<<Color::BRED<<"Exit "<<Color::RESET<<"\n\n";
+    }
+
+
+    void menubar(){
+        option();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='1' && ch[0]<='3'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==1){
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Infix To Postfix Conversion"<<Color::RESET;
+            std::cout<<"\n\n";
+            std::string postfix = postf();
+            std::cout<<Color::MAGENTA<<"Postfix : "<<Color::RESET;
+            std::cout<<Color::BCYAN<<postfix<<Color::RESET;
+            std::cout<<"\n\n";
+            if(!isEvaluate()){
+                std::cout<<Color::BG_YELLOW<<"Expression is not evaluatable."<<Color::RESET;
+                std::cout<<"\n\n";
+                menubar();
+            }else{
+                double res = evalPost(postfix);
+                std::cout<<Color::MAGENTA<<"Result : "<<Color::RESET;
+                std::cout<<Color::BCYAN<<res<<Color::RESET;
+                std::cout<<"\n\n";
+                menubar();
+            }
+        }else if(choice==2){
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Infix To Pretfix Conversion"<<Color::RESET;
+            std::cout<<"\n\n";
+            std::string prefix = pref();
+            std::cout<<Color::MAGENTA<<"Prefix : "<<Color::RESET;
+            std::cout<<Color::BCYAN<<prefix<<Color::RESET;
+            std::cout<<"\n\n";
+            if(!isEvaluate()){
+                std::cout<<Color::BG_YELLOW<<"Expression is not evaluatable."<<Color::RESET;
+                std::cout<<"\n\n";
+                menubar();
+            }else{
+                double res = evalPre(prefix);
+                std::cout<<Color::MAGENTA<<"Result : "<<Color::RESET;
+                std::cout<<Color::BCYAN<<res<<Color::RESET;
+                std::cout<<"\n\n";
+                menubar();
+            }
+        }else if(choice==3){
+            return;
+        }
+    }
+
+    void mainoption(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[1] "<<Color::RESET;
+        std::cout<<Color::BBLUE<<"Enter Infix Expression "<<Color::RESET<<"\n";
+        std::cout<<Color::BMAGENTA<<"[2] "<<Color::RESET;
+        std::cout<<Color::BRED<<"Exit "<<Color::RESET<<"\n\n";
+    }
+    void menu(){
+        mainoption();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='1' && ch[0]<='2'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==1){
+            std::cout<<Color::BOLD<<"Enter Infix Expression : "<<Color::RESET;
+            std::string str; 
+            std::cin>>str;
+            inf = str;
+            std::cout<<"\n\n";
+            if(!isValid()){
+                std::cout<<Color::BG_YELLOW<<"Expression is not valid."<<Color::RESET;
+                std::cout<<"\n\n";
+                mainoption();
+            }else{
+                menubar();
+                mainoption();
+            }
+        }else if(choice==2){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Exiting...."<<Color::RESET;
+            std::cout<<"\n\n";
+            Sleep(2000);
+            return;
+        }
     }
 };
