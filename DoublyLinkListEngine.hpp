@@ -1,7 +1,12 @@
 #pragma once
 
 #include<iostream>
+#include<windows.h>
+#include<iomanip>
+#include<sstream>
+#include<string>
 #include "colors.hpp"
+#include<vector>
 
 template<typename T>
 class Nde{
@@ -69,6 +74,9 @@ public:
             tail = dum;
         }
         tmp->next = dum;
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+        std::cout<<"\n\n";
     }
     void insertBefore(T key,T val){
         Nde<T>* tmp = head;
@@ -89,6 +97,9 @@ public:
             head = dum;
         }
         tmp->prev = dum;
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+        std::cout<<"\n\n";
     }
 
     void deleteBegin(){
@@ -142,6 +153,9 @@ public:
             tmp->next->prev = tmp->prev;
             delete tmp;
         }
+        std::cout<<Color::BG_YELLOW<<"Deleting..."<<Color::RESET<<"\n\n";
+        Sleep(2000);
+        std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
     }
 
     int searchKey(T key){
@@ -244,5 +258,145 @@ public:
             std::cout<<Color::BG_CYAN<<" tail→val: "<<tail->data<<" "<<Color::RESET<<"|"<<Color::MAGENTA<<" tail→next: nullptr"<<Color::RESET;
         }
         std::cout<<"\n\n";
+    }
+
+    void options(){
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<"insert_at_beginning   ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"insert_at_end \n";
+
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"insert_after_a_given_key   ";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"insert_before_a_given_key \n";
+
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"visualize   ";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"delete_at_beginning   ";
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"delete_at_end \n";
+
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"delete_key ";
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<"search_key \n";
+
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
+    }
+    void menu(){
+        options();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+        if(choice==0){
+            std::cout<<Color::BG_YELLOW<<"Inserting Value at the Beginning"<<Color::RESET<<"\n\n";
+            std::cout<<"Enter value to insert: ";
+            T val;
+            std::cin>>val;
+            insertBegin(val);
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+            std::cout<<"\n\n";
+            menu();
+        }else if(choice==1){
+            std::cout<<Color::BG_YELLOW<<"Inserting Value at the End"<<Color::RESET<<"\n\n";
+            std::cout<<"Enter value to insert: ";
+            T val;
+            std::cin>>val;
+            insertEnd(val);
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Value Inserted successfully.."<<Color::RESET;
+            std::cout<<"\n\n";
+            menu();
+        }else if(choice==2){
+            std::cout<<Color::BG_YELLOW<<"Inserting Value after a given key"<<Color::RESET<<"\n\n";
+            T val;
+            T target;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>target;
+            std::cout<<"\n";
+            std::cout<<Color::BYELLOW<<"Enter value to insert: "<<Color::RESET;
+            std::cin>>val;
+            insertAfter(target,val);
+            menu();
+        }else if(choice==3){
+            std::cout<<Color::BG_YELLOW<<"Inserting Value before a given key"<<Color::RESET<<"\n\n";
+            T val;
+            T target;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>target;
+            std::cout<<"\n";
+            std::cout<<Color::BYELLOW<<"Enter value to insert: "<<Color::RESET;
+            std::cin>>val;
+            insertBefore(target,val);
+            menu();
+        }else if(choice==4){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"VISUALIZER"<<Color::RESET<<" :\n";
+            visualize();
+            std::cout<<"\n\n";
+            menu();
+        }else if(choice==5){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting at the beginning"<<Color::RESET<<"\n\n";
+            deleteBegin();
+            Sleep(2000);
+            std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
+            menu();
+        }else if(choice==6){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting at the end"<<Color::RESET<<"\n\n";
+            deleteEnd();
+            Sleep(2000);
+            std::cout<<Color::BG_RED<<"Deleted successfully"<<Color::RESET<<"\n\n";
+            menu();
+        }else if(choice==7){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Deleting key"<<Color::RESET<<"\n\n";
+            std::cout<<"\n\n";
+            T key;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>key;
+            std::cout<<"\n\n";
+            deleteKey(key);
+            menu();
+        }else if(choice==8){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Searching key"<<Color::RESET<<"\n\n";
+            std::cout<<"\n\n";
+            T key;
+            std::cout<<Color::BLUE<<"Enter key: "<<Color::RESET;
+            std::cin>>key;
+            std::cout<<"\n\n";
+            int p = searchKey(key);
+            if(p==-1){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_RED<<"Key Not Found!!"<<Color::RESET<<"\n\n";
+            }else{
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_GREEN<<"Key Found at the position "<<Color::BG_BLUE<<pos<<Color::RESET<<"\n\n";
+            }
+            menu();
+        }else if(choice==9){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Exiting Doubly Linked List...."<<Color::RESET;
+            std::cout<<"\n\n";
+            Sleep(2000);
+            return;
+        }
     }
 };

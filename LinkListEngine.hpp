@@ -6,6 +6,7 @@
 #include<sstream>
 #include<string>
 #include<windows.h>
+#include<vector>
 
 
 template<typename T>
