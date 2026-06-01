@@ -323,7 +323,7 @@ public:
             directMenu();
             menubar();
         }else if(choice==2){
-            std::cout<<Color::BG_YELLOW<<"Uudirected Graph Insertion"<<Color::RESET<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"Undirected Graph Insertion"<<Color::RESET<<"\n\n";
             T nd; int edg;
             std::cout<<"Enter the number of edges :";
             std::cin>>edg;

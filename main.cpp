@@ -208,10 +208,11 @@ public:
         std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
         std::cout<<"Heap   \n";
         std::cout<<Color::BMAGENTA<<"[10]"<<Color::RESET;
-        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
+        std::cout<<Color::BRED<<"Sign Out "<<Color::RESET<<"\n";
     }
 
     void menu(std::string username){
+        std::string name = username;
         std::cout<<"\n\n";
         std::cout<<"Welcome "<<username<<". Your DS visualizer is ready.\n\n";
         operations();
@@ -233,23 +234,39 @@ public:
         if(choice==1){
 
         }else if(choice==2){
-
+            StackMenu s;
+            s.menubar();
+            menu(name);
         }else if(choice==3){
-            
+            Que<int> q;
+            q.menubar();
+            menu(name);
         }else if(choice==4){
-            
+            Evaluation e;
+            e.menubar();
+            menu(name);
         }else if(choice==5){
-            
+            LinkedList<int> l;
+            l.menubar();
+            menu(name);
         }else if(choice==6){
-            
+            Doubly<int> d;
+            d.menu();
+            menu(name);
         }else if(choice==7){
-            
+            Graphical<int> g;
+            g.menubar();
+            menu(name);
         }else if(choice==8){
-            
+            BST<int> b;
+            b.menubar();
+            menu(name);
         }else if(choice==9){
-            
+            Heaap<int> h;
+            h.menubar();
+            menu(name);
         }else if(choice==10){
-            
+            return;
         }
     }
 
