@@ -8,6 +8,7 @@
 #include "GraphEngine.hpp"
 #include "HeapEngine.hpp"
 #include "Evaluation.hpp"
+#include "DoublyLinkListEngine.hpp"
 
 int main(){
     
