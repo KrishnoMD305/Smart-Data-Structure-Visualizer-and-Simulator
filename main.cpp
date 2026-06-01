@@ -155,10 +155,108 @@ public:
         menu(loggUser.username);
     }
 
-    void menu(std::string username){
-
+    void title(){
+        std::cout<<Color::BG_YELLOW<<"======================"<<Color::RESET<<std::endl;
+        std::cout<<Color::BG_YELLOW<<"|"<<std::endl;
+        std::cout<<Color::BCYAN<<"   DS Visualizer    "<<Color::RESET;
+        std::cout<<Color::BG_YELLOW<<"|"<<std::endl;
+        std::cout<<Color::BG_YELLOW<<"======================"<<Color::RESET<<std::endl;
+    }
+    void about(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"DS Visualizer"<<Color::RESET<<"\n";
+        std::cout<<Color::Italic<<"Version: 1.0"<<Color::RESET<<"\n\n";
+        std::cout<<Color::BBLUE<<"Developed by: "<<Color::RESET;
+        std::cout<<Color::BOLD<<"Krishno Mondol"<<Color::RESET<<"\n";
+        std::cout<<"Student, Department of Computer Science and Engineering,\n";
+        std::cout<<"Khulna University of Engineering & Technology\n\n";
+        std::cout<<Color::BCYAN<<"DS Visualizer is an educational application designed to help students"<<Color::RESET<<"\n";
+        std::cout<<Color::BCYAN<<"learn and understand data structures and algorithms visually."<<Color::RESET<<"\n\n";
+        std::cout<<Color::BG_YELLOW<<"Technologies Used:"<<Color::RESET<<"\n";
+        std::cout<<Color::BRED<<"- C++"<<Color::RESET<<"\n\n";
+        std::cout<<"This software was created for learning and academic purposes.\n\n";
+        std::cout<<Color::Italic<<"© 2026 DS Visualizer"<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+    void options(){
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Sign In   \n";
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Sign Up   \n";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"About   \n";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
+    }
+    void operations(){
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Array   \n";
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Stack   \n";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Queue   \n";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Expression Convertion   \n";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"Linked List   \n";
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"Doubly Linked List   \n";
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"Graph   \n";
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<"Binary Search Tree   \n";
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<"Heap   \n";
+        std::cout<<Color::BMAGENTA<<"[10]"<<Color::RESET;
+        std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
     }
 
+    void menu(std::string username){
+        std::cout<<"\n\n";
+        std::cout<<"Welcome "<<username<<". Your DS visualizer is ready.\n\n";
+        operations();
+        int choice; 
+        std::string ch;
+        while(true){
+            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+            std::cin>>ch;
+            if(ch.size()==2 && ch[0]>='1' && ch[0]<='10'){
+                break;
+            }
+            std::cout<<"\n\n\n";
+            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+        }
+
+        choice = std::stoi(ch);
+        std::cout<<"\n\n";
+
+        if(choice==1){
+
+        }else if(choice==2){
+
+        }else if(choice==3){
+            
+        }else if(choice==4){
+            
+        }else if(choice==5){
+            
+        }else if(choice==6){
+            
+        }else if(choice==7){
+            
+        }else if(choice==8){
+            
+        }else if(choice==9){
+            
+        }else if(choice==10){
+            
+        }
+    }
+
+
+    void menubar(){
+
+    }
 };
 
 int main(){

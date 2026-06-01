@@ -26,4 +26,5 @@ namespace Color{
     const std::string BG_YELLOW = "\033[43m";
     const std::string BG_BLUE = "\033[44m";
     const std::string BG_CYAN = "\033[46m";
+    const std::string Italic = "\033[3m";
 }
