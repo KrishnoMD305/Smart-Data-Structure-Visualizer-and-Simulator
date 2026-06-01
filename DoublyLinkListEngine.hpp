@@ -388,7 +388,7 @@ public:
                 std::cout<<Color::BG_RED<<"Key Not Found!!"<<Color::RESET<<"\n\n";
             }else{
                 std::cout<<"\n\n";
-                std::cout<<Color::BG_GREEN<<"Key Found at the position "<<Color::BG_BLUE<<pos<<Color::RESET<<"\n\n";
+                std::cout<<Color::BG_GREEN<<"Key Found at the position "<<Color::BG_BLUE<<p<<Color::RESET<<"\n\n";
             }
             menu();
         }else if(choice==9){
