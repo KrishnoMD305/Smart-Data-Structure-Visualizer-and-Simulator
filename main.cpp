@@ -189,25 +189,25 @@ public:
         std::cout<<Color::BRED<<"EXIT "<<Color::RESET<<"\n";
     }
     void operations(){
-        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
         std::cout<<"Array   \n";
-        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
         std::cout<<"Stack   \n";
-        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
         std::cout<<"Queue   \n";
-        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
         std::cout<<"Expression Convertion   \n";
-        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
         std::cout<<"Linked List   \n";
-        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
         std::cout<<"Doubly Linked List   \n";
-        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
         std::cout<<"Graph   \n";
-        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
         std::cout<<"Binary Search Tree   \n";
-        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
         std::cout<<"Heap   \n";
-        std::cout<<Color::BMAGENTA<<"[10]"<<Color::RESET;
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
         std::cout<<Color::BRED<<"Sign Out "<<Color::RESET<<"\n";
     }
 
@@ -215,70 +215,132 @@ public:
         std::string name = username;
         std::cout<<"\n\n";
         std::cout<<"Welcome "<<username<<". Your DS visualizer is ready.\n\n";
-        operations();
-        int choice; 
-        std::string ch;
-        while(true){
-            std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
-            std::cin>>ch;
-            if(ch.size()==2 && ch[0]>='1' && ch[0]<='10'){
+        while(1){
+            operations();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==1){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Array Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                MyArray arr;
+                arr.menubar();
+            }else if(choice==2){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Stack Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                StackMenu s;
+                s.menubar();
+            }else if(choice==3){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Queue Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                Que<int> q;
+                q.menubar();
+            }else if(choice==4){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"============================="<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"  Expression Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"============================="<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                Evaluation e;
+                e.menubar();
+            }else if(choice==5){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"  Linked List Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"================================"<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                LinkedList<int> l;
+                l.menubar();
+            }else if(choice==6){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"  Doubly Linked List Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                Doubly<int> d;
+                d.menu();
+            }else if(choice==7){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"           Graph Visualizer           "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<"\n\n";
+                Graphical<int> g;
+                g.menubar();
+            }else if(choice==8){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+
+                std::cout<<Color::BG_YELLOW<<"|" << Color::BCYAN << "        BST Visualizer        "<< Color::BG_YELLOW << "|" << Color::RESET << std::endl;
+
+                std::cout << Color::BG_YELLOW << "========================================" << Color::RESET << std::endl;
+                std::cout<<"\n\n";
+                BST<int> b;
+                b.menubar();
+            }else if(choice==9){
+                std::cout<<"\n\n";
+
+                std::cout<<"\n\n";
+                Heaap<int> h;
+                h.menubar();
+            }else if(choice==10){
+                std::cout<<name<<", You are successfully signed out.\n\n";
                 break;
             }
-            std::cout<<"\n\n\n";
-            std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
-        }
-
-        choice = std::stoi(ch);
-        std::cout<<"\n\n";
-
-        if(choice==1){
-
-        }else if(choice==2){
-            std::cout<<"\n\n";
-            std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
-            std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Stack Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
-            std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
-            std::cout<<"\n\n";
-            StackMenu s;
-            s.menubar();
-            menu(name);
-        }else if(choice==3){
-            Que<int> q;
-            q.menubar();
-            menu(name);
-        }else if(choice==4){
-            Evaluation e;
-            e.menubar();
-            menu(name);
-        }else if(choice==5){
-            LinkedList<int> l;
-            l.menubar();
-            menu(name);
-        }else if(choice==6){
-            Doubly<int> d;
-            d.menu();
-            menu(name);
-        }else if(choice==7){
-            Graphical<int> g;
-            g.menubar();
-            menu(name);
-        }else if(choice==8){
-            BST<int> b;
-            b.menubar();
-            menu(name);
-        }else if(choice==9){
-            Heaap<int> h;
-            h.menubar();
-            menu(name);
-        }else if(choice==10){
-            std::cout<<name<<", You are successfully signed out.\n\n";
-            return;
         }
     }
 
 
     void menubar(){
+        title();
+        while(1){
+            options();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='1' && ch[0]<='4'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
 
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==1){
+                signIn();
+            }else if(choice==2){
+                signUp();
+            }else if(choice==3){
+                about();
+            }else if(choice==4){
+                break;
+            }
+        }
     }
 };
 
