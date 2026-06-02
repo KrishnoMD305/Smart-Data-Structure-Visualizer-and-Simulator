@@ -291,10 +291,8 @@ public:
             }else if(choice==8){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
-
-                std::cout<<Color::BG_YELLOW<<"|" << Color::BCYAN << "        BST Visualizer        "<< Color::BG_YELLOW << "|" << Color::RESET << std::endl;
-
-                std::cout << Color::BG_YELLOW << "========================================" << Color::RESET << std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"        BST Visualizer        "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 BST<int> b;
                 b.menubar();
