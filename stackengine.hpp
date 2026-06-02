@@ -127,13 +127,6 @@ public:
         std::cout<<Color::MAGENTA<<"Show history[8]\n"<<Color::RESET;
     }
 
-    void stackvisu(){
-        std::cout<<Color::RED<<" --------------------------------"<<Color::RESET<<"\n";
-        std::cout<<Color::RED<<"|                                |"<<Color::RESET<<"\n";
-        std::cout<<Color::RED<<"| "<<Color::BGREEN<<"Stack Visualizer and Simulator"<<Color::RED<<" |"<<Color::RESET<<"\n";
-        std::cout<<Color::RED<<"|                                |"<<Color::RESET<<"\n";
-        std::cout<<Color::RED<<" --------------------------------"<<Color::RESET<<"\n";
-    }
 };
 
 
@@ -154,7 +147,6 @@ public:
     StackMenu(): mys(myst) {}
 
     void menubar(){
-        text.stackvisu();
         while(1){
             std::cout<<"Current Stack: \n\n";
             mys.visualize();

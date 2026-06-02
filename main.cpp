@@ -164,6 +164,7 @@ public:
     }
     void about(){
         std::cout<<"\n\n";
+        std::cout<<"=============================================================\n";
         std::cout<<Color::BGREEN<<"DS Visualizer"<<Color::RESET<<"\n";
         std::cout<<Color::Italic<<"Version: 1.0"<<Color::RESET<<"\n\n";
         std::cout<<Color::BBLUE<<"Developed by: "<<Color::RESET;
@@ -175,7 +176,8 @@ public:
         std::cout<<Color::BG_YELLOW<<"Technologies Used:"<<Color::RESET<<"\n";
         std::cout<<Color::BRED<<"- C++"<<Color::RESET<<"\n\n";
         std::cout<<"This software was created for learning and academic purposes.\n\n";
-        std::cout<<Color::Italic<<"© 2026 DS Visualizer"<<Color::RESET;
+        std::cout<<Color::Italic<<"© 2026 DS Visualizer"<<Color::RESET<<"\n";
+        std::cout<<"=============================================================\n";
         std::cout<<"\n\n";
     }
     void options(){
@@ -232,79 +234,79 @@ public:
             choice = std::stoi(ch);
             std::cout<<"\n\n";
 
-            if(choice==1){
+            if(choice==0){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Array Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"   Array Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 MenuEngine m;
                 m.menubar();
-            }else if(choice==2){
+            }else if(choice==1){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Stack Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"   Stack Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 StackMenu s;
                 s.menubar();
-            }else if(choice==3){
+            }else if(choice==2){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Queue Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"   Queue Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 Que<int> q;
                 q.menubar();
-            }else if(choice==4){
+            }else if(choice==3){
                 std::cout<<"\n\n";
-                std::cout<<Color::BG_YELLOW<<"============================="<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"  Expression Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"============================="<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"==========================="<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"  Expression Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"==========================="<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 Evaluation e;
                 e.menubar();
-            }else if(choice==5){
+            }else if(choice==4){
                 std::cout<<"\n\n";
-                std::cout<<Color::BG_YELLOW<<"================================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"  Linked List Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"============================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"  Linked List Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"============================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 LinkedList<int> l;
                 l.menubar();
-            }else if(choice==6){
+            }else if(choice==5){
                 std::cout<<"\n\n";
-                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"  Doubly Linked List Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"==================================="<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"  Doubly Linked List Visualizer  "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"==================================="<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 Doubly<int> d;
                 d.menu();
-            }else if(choice==7){
+            }else if(choice==6){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"           Graph Visualizer           "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"           Graph Visualizer           "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
                 std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 Graphical<int> g;
                 g.menubar();
-            }else if(choice==8){
+            }else if(choice==7){
                 std::cout<<"\n\n";
-                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"        BST Visualizer        "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"        BST Visualizer        "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"================================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 BST<int> b;
                 b.menubar();
-            }else if(choice==9){
+            }else if(choice==8){
                 std::cout<<"\n\n";
-                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"        Heap Visualizer        "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
-                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"================================="<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<Color::BCYAN<<"        Heap Visualizer        "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"================================="<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 Heaap<int> h;
                 h.menubar();
-            }else if(choice==10){
+            }else if(choice==9){
                 std::cout<<name<<", You are successfully signed out.\n\n";
                 break;
             }
