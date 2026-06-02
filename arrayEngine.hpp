@@ -204,6 +204,114 @@ public:
         std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
         std::cout<<"\n\n";
     }
+
+    void sortingMenubar(){
+        std::cout<<Color::BG_YELLOW<<"Array Sorting"<<Color::RESET<<"\n\n";
+        while(1){
+            sortingOptions();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==0){
+                std::cout<<Color::BG_YELLOW<<"Bubble Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.bubble_sort();
+                std::cout<<"Sorted : ";
+                int n = tmp.len();
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                std::cout<<"\n\n";
+            }else if(choice==1){
+                std::cout<<Color::BG_YELLOW<<"Bubble Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.bubble_visu();
+                std::cout<<"\n\n";
+            }else if(choice==2){
+                std::cout<<Color::BG_YELLOW<<"Insertion Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.insertion_sort();
+                std::cout<<"Sorted : ";
+                int n = tmp.len();
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                std::cout<<"\n\n";
+            }else if(choice==3){
+                std::cout<<Color::BG_YELLOW<<"Insertion Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.insertion_visu();
+                std::cout<<"\n\n";
+            }else if(choice==4){
+                std::cout<<Color::BG_YELLOW<<"Selection Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.selection_sort();
+                std::cout<<"Sorted : ";
+                int n = tmp.len();
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                std::cout<<"\n\n";
+            }else if(choice==5){
+                std::cout<<Color::BG_YELLOW<<"Selection Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.selection_visu();
+                std::cout<<"\n\n";
+            }else if(choice==6){
+                std::cout<<Color::BG_YELLOW<<"Quick Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                int n = tmp.len();
+                sr.quick_sort(0,n); 
+                std::cout<<"Sorted : ";
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                std::cout<<"\n\n";
+            }else if(choice==7){
+                std::cout<<Color::BG_YELLOW<<"Quick Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                sr.quick_visu();
+                std::cout<<"\n\n";
+            }else if(choice==8){
+                std::cout<<Color::BG_YELLOW<<"Merge Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(*this);
+                SortArray sr(tmp);
+                int n = tmp.len();
+                sr.merge_sort(); 
+                std::cout<<"Sorted : ";
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                std::cout<<"\n\n";
+            }else if(choice==9){
+                std::cout<<"\n\n";
+                std::cout<<"\n\n";
+                Sleep(2000);
+                break;
+            }
+        }
+    }
+
     void searchingOptions(){
         std::cout<<"\n\n";
         std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
