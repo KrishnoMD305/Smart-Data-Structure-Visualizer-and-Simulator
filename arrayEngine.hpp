@@ -118,6 +118,12 @@ public:
     }
 
     void del_mid(int target){
+        if(target>size){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Target is out of the bound"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         if(size==0){
             std::cout<<"\n\n";
             std::cout<<Color::BG_RED<<"Array is Empty"<<Color::RESET;
@@ -213,6 +219,80 @@ public:
         std::cout<<"\n\n";
     }
 
+    void searchingmenubar(){
+        std::cout<<Color::BG_YELLOW<<"Array Searching"<<Color::RESET<<"\n\n";
+        while(1){
+            searchingOptions();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='1' && ch[0]<='5'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==1){
+                std::cout<<Color::BG_YELLOW<<"Linear Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray ss(*this);
+                int pos = ss.linear_search(target);
+                if(pos==-1){
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BRED<<"Value didn't Found!!"<<Color::RESET;
+                    std::cout<<"\n\n";
+                }else{
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BGREEN<<"Value found at position "<<pos<<"."<<Color::RESET;
+                    std::cout<<"\n\n";
+                }
+            }else if(choice==2){
+                std::cout<<Color::BG_YELLOW<<"Linear Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray ss(*this);
+                ss.linear_visu(target);
+            }else if(choice==3){
+                std::cout<<Color::BG_YELLOW<<"Binary Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray ss(*this);
+                int pos = ss.binary_search(target);
+                if(pos==-1){
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BRED<<"Value didn't Found!!"<<Color::RESET;
+                    std::cout<<"\n\n";
+                }else{
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BGREEN<<"Value found at position "<<pos<<"."<<Color::RESET;
+                    std::cout<<"\n\n";
+                }
+            }else if(choice==4){
+                std::cout<<Color::BG_YELLOW<<"Binary Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray ss(*this);
+                ss.binary_visu(target);
+            }else if(choice==5){
+                std::cout<<"\n\n";
+                std::cout<<"\n\n";
+                Sleep(2000);
+                break;
+            }
+        }
+    }
+
 
     void menubar(){
         while(1){
@@ -233,25 +313,52 @@ public:
             std::cout<<"\n\n";
 
             if(choice==0){
-
+                std::cout<<Color::BG_YELLOW<<"Value Insertion at Last"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to insert: ";
+                int val;
+                std::cin>>val;
+                insert_at_last(val);
             }else if(choice==1){
-
+                std::cout<<Color::BG_YELLOW<<"Value Insertion at First"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to insert: ";
+                int val;
+                std::cin>>val;
+                insert_at_first(val);
             }else if(choice==2){
-                
+                std::cout<<Color::BG_YELLOW<<"Value Insertion at Specific Position"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to insert: ";
+                int val;
+                std::cin>>val;
+                std::cout<<"Enter Target: ";
+                int target;
+                std::cin>>target;
+                insert_mid(val,target);
             }else if(choice==3){
-                
+                std::cout<<Color::BG_YELLOW<<"Value Deletion from First"<<Color::RESET<<"\n\n";
+                del_at_first();
             }else if(choice==4){
-                
+                std::cout<<Color::BG_YELLOW<<"Value Deletion from Last"<<Color::RESET<<"\n\n";
+                del_at_last();
             }else if(choice==5){
-                
+                std::cout<<Color::BG_YELLOW<<"Value Deletion from Specific Position"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter Position: ";
+                int pos;
+                std::cin>>pos;
+                del_mid(pos);
             }else if(choice==6){
-                
+                std::cout<<Color::BG_YELLOW<<"Array Visualization"<<Color::RESET<<"\n\n";
+                VisuArray vv(*this); 
+                vv.show();
             }else if(choice==7){
                 
             }else if(choice==8){
                 
             }else if(choice==9){
-                
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_RED<<"Exiting Array...."<<Color::RESET;
+                std::cout<<"\n\n";
+                Sleep(2000);
+                break;
             }
         }
     }
