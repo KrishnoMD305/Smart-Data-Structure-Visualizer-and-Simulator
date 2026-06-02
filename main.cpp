@@ -234,6 +234,11 @@ public:
         if(choice==1){
 
         }else if(choice==2){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+            std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Stack Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+            std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
+            std::cout<<"\n\n";
             StackMenu s;
             s.menubar();
             menu(name);

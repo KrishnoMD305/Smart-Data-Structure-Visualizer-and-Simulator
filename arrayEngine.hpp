@@ -458,9 +458,9 @@ public:
                 VisuArray vv(*this); 
                 vv.show();
             }else if(choice==7){
-                
+                searchingmenubar();
             }else if(choice==8){
-                
+                sortingMenubar();
             }else if(choice==9){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_RED<<"Exiting Array...."<<Color::RESET;
