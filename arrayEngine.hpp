@@ -5,7 +5,9 @@
 #include<string>
 #include<windows.h>
 
-
+class VisuArray;
+class SearchArray;
+class SortArray;
 class MyArray{
 private:
     int MAX_SIZE = 50;
@@ -148,329 +150,6 @@ public:
     friend class VisuArray;
     friend class SortArray;
     
-    void arrayOptions(){
-        std::cout<<"\n\n";
-        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
-        std::cout<<"Insert at Last ";
-        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
-        std::cout<<"Insert at First ";
-        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
-        std::cout<<"Insert at Specific Position \n";
-
-        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
-        std::cout<<"Delete from Last ";
-        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
-        std::cout<<"Delete from First ";
-        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
-        std::cout<<"Delete from Specific Position \n";
-
-        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
-        std::cout<<"Visualization ";
-        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
-        std::cout<<"Searching ";
-        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
-        std::cout<<"Sorting \n";
-
-        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
-        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
-        std::cout<<"\n\n";
-    }
-    void sortingOptions(){
-        std::cout<<"\n\n";
-        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
-        std::cout<<"Bubble Sort ";
-        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
-        std::cout<<"Bubble Sort Visualization\n";
-
-        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
-        std::cout<<"Insertion Sort ";
-        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
-        std::cout<<"Insertion Sort Visualization\n";
-
-        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
-        std::cout<<"Selection Sort ";
-        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
-        std::cout<<"Selection Sort Visualization\n";
-
-        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
-        std::cout<<"Quick Sort ";
-        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
-        std::cout<<"Quick Sort Visualization\n";
-
-        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
-        std::cout<<"Merge Sort\n";
-
-        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
-        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
-        std::cout<<"\n\n";
-    }
-
-    void sortingMenubar(){
-        std::cout<<Color::BG_YELLOW<<"Array Sorting"<<Color::RESET<<"\n\n";
-        while(1){
-            sortingOptions();
-            int choice; 
-            std::string ch;
-            while(true){
-                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
-                std::cin>>ch;
-                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
-                    break;
-                }
-                std::cout<<"\n\n\n";
-                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
-            }
-
-            choice = std::stoi(ch);
-            std::cout<<"\n\n";
-
-            if(choice==0){
-                std::cout<<Color::BG_YELLOW<<"Bubble Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.bubble_sort();
-                std::cout<<"Sorted : ";
-                int n = tmp.len();
-                for(int i=0; i<n; i++){
-                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
-                }
-                std::cout<<"\n\n";
-            }else if(choice==1){
-                std::cout<<Color::BG_YELLOW<<"Bubble Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.bubble_visu();
-                std::cout<<"\n\n";
-            }else if(choice==2){
-                std::cout<<Color::BG_YELLOW<<"Insertion Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.insertion_sort();
-                std::cout<<"Sorted : ";
-                int n = tmp.len();
-                for(int i=0; i<n; i++){
-                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
-                }
-                std::cout<<"\n\n";
-            }else if(choice==3){
-                std::cout<<Color::BG_YELLOW<<"Insertion Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.insertion_visu();
-                std::cout<<"\n\n";
-            }else if(choice==4){
-                std::cout<<Color::BG_YELLOW<<"Selection Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.selection_sort();
-                std::cout<<"Sorted : ";
-                int n = tmp.len();
-                for(int i=0; i<n; i++){
-                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
-                }
-                std::cout<<"\n\n";
-            }else if(choice==5){
-                std::cout<<Color::BG_YELLOW<<"Selection Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.selection_visu();
-                std::cout<<"\n\n";
-            }else if(choice==6){
-                std::cout<<Color::BG_YELLOW<<"Quick Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                int n = tmp.len();
-                sr.quick_sort(0,n); 
-                std::cout<<"Sorted : ";
-                for(int i=0; i<n; i++){
-                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
-                }
-                std::cout<<"\n\n";
-            }else if(choice==7){
-                std::cout<<Color::BG_YELLOW<<"Quick Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                sr.quick_visu();
-                std::cout<<"\n\n";
-            }else if(choice==8){
-                std::cout<<Color::BG_YELLOW<<"Merge Sorting"<<Color::RESET<<"\n\n";
-                MyArray tmp(*this);
-                SortArray sr(tmp);
-                int n = tmp.len();
-                sr.merge_sort(); 
-                std::cout<<"Sorted : ";
-                for(int i=0; i<n; i++){
-                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
-                }
-                std::cout<<"\n\n";
-            }else if(choice==9){
-                std::cout<<"\n\n";
-                std::cout<<"\n\n";
-                Sleep(2000);
-                break;
-            }
-        }
-    }
-
-    void searchingOptions(){
-        std::cout<<"\n\n";
-        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
-        std::cout<<"Linear Search\n";
-        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
-        std::cout<<"Linear Search Visualization\n";
-        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
-        std::cout<<"Linear Search\n";
-        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
-        std::cout<<"Linear Search Visualization\n";
-        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
-        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
-        std::cout<<"\n\n";
-    }
-
-    void searchingmenubar(){
-        std::cout<<Color::BG_YELLOW<<"Array Searching"<<Color::RESET<<"\n\n";
-        while(1){
-            searchingOptions();
-            int choice; 
-            std::string ch;
-            while(true){
-                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
-                std::cin>>ch;
-                if(ch.size()==1 && ch[0]>='1' && ch[0]<='5'){
-                    break;
-                }
-                std::cout<<"\n\n\n";
-                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
-            }
-
-            choice = std::stoi(ch);
-            std::cout<<"\n\n";
-
-            if(choice==1){
-                std::cout<<Color::BG_YELLOW<<"Linear Search"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to search: ";
-                int target;
-                std::cin>>target;
-                SearchArray ss(*this);
-                int pos = ss.linear_search(target);
-                if(pos==-1){
-                    std::cout<<"\n\n";
-                    std::cout<<Color::BRED<<"Value didn't Found!!"<<Color::RESET;
-                    std::cout<<"\n\n";
-                }else{
-                    std::cout<<"\n\n";
-                    std::cout<<Color::BGREEN<<"Value found at position "<<pos<<"."<<Color::RESET;
-                    std::cout<<"\n\n";
-                }
-            }else if(choice==2){
-                std::cout<<Color::BG_YELLOW<<"Linear Search"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to search: ";
-                int target;
-                std::cin>>target;
-                SearchArray ss(*this);
-                ss.linear_visu(target);
-            }else if(choice==3){
-                std::cout<<Color::BG_YELLOW<<"Binary Search"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to search: ";
-                int target;
-                std::cin>>target;
-                SearchArray ss(*this);
-                int pos = ss.binary_search(target);
-                if(pos==-1){
-                    std::cout<<"\n\n";
-                    std::cout<<Color::BRED<<"Value didn't Found!!"<<Color::RESET;
-                    std::cout<<"\n\n";
-                }else{
-                    std::cout<<"\n\n";
-                    std::cout<<Color::BGREEN<<"Value found at position "<<pos<<"."<<Color::RESET;
-                    std::cout<<"\n\n";
-                }
-            }else if(choice==4){
-                std::cout<<Color::BG_YELLOW<<"Binary Search"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to search: ";
-                int target;
-                std::cin>>target;
-                SearchArray ss(*this);
-                ss.binary_visu(target);
-            }else if(choice==5){
-                std::cout<<"\n\n";
-                std::cout<<"\n\n";
-                Sleep(2000);
-                break;
-            }
-        }
-    }
-
-
-    void menubar(){
-        while(1){
-            arrayOptions();
-            int choice; 
-            std::string ch;
-            while(true){
-                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
-                std::cin>>ch;
-                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
-                    break;
-                }
-                std::cout<<"\n\n\n";
-                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
-            }
-
-            choice = std::stoi(ch);
-            std::cout<<"\n\n";
-
-            if(choice==0){
-                std::cout<<Color::BG_YELLOW<<"Value Insertion at Last"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to insert: ";
-                int val;
-                std::cin>>val;
-                insert_at_last(val);
-            }else if(choice==1){
-                std::cout<<Color::BG_YELLOW<<"Value Insertion at First"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to insert: ";
-                int val;
-                std::cin>>val;
-                insert_at_first(val);
-            }else if(choice==2){
-                std::cout<<Color::BG_YELLOW<<"Value Insertion at Specific Position"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter value to insert: ";
-                int val;
-                std::cin>>val;
-                std::cout<<"Enter Target: ";
-                int target;
-                std::cin>>target;
-                insert_mid(val,target);
-            }else if(choice==3){
-                std::cout<<Color::BG_YELLOW<<"Value Deletion from First"<<Color::RESET<<"\n\n";
-                del_at_first();
-            }else if(choice==4){
-                std::cout<<Color::BG_YELLOW<<"Value Deletion from Last"<<Color::RESET<<"\n\n";
-                del_at_last();
-            }else if(choice==5){
-                std::cout<<Color::BG_YELLOW<<"Value Deletion from Specific Position"<<Color::RESET<<"\n\n";
-                std::cout<<"Enter Position: ";
-                int pos;
-                std::cin>>pos;
-                del_mid(pos);
-            }else if(choice==6){
-                std::cout<<Color::BG_YELLOW<<"Array Visualization"<<Color::RESET<<"\n\n";
-                VisuArray vv(*this); 
-                vv.show();
-            }else if(choice==7){
-                searchingmenubar();
-            }else if(choice==8){
-                sortingMenubar();
-            }else if(choice==9){
-                std::cout<<"\n\n";
-                std::cout<<Color::BG_RED<<"Exiting Array...."<<Color::RESET;
-                std::cout<<"\n\n";
-                Sleep(2000);
-                break;
-            }
-        }
-    }
-
 
 };
 
@@ -1441,5 +1120,350 @@ public:
         int left = 0, right = arr.len()-1;
         mergesort_helper(arr,left,right);
     }
+
+};
+
+
+
+class MenuEngine{
+public:
+    MyArray arr; 
+    void arrayOptions(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<"Insert at Last ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Insert at First ";
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Insert at Specific Position \n";
+
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Delete from Last ";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Delete from First ";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"Delete from Specific Position \n";
+
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"Visualization ";
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"Searching ";
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<"Sorting \n";
+
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+    void sortingOptions(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<"Bubble Sort ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Bubble Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Insertion Sort ";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Insertion Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Selection Sort ";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"Selection Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"Quick Sort ";
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"Quick Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<"Merge Sort\n";
+
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+
+    void sortingMenubar(){
+        std::cout<<Color::BG_YELLOW<<"Array Sorting"<<Color::RESET<<"\n\n";
+        while(1){
+            sortingOptions();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==0){
+                std::cout<<Color::BG_YELLOW<<"Bubble Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->bubble_sort();
+                std::cout<<"Sorted : ";
+                int n = tmp.len();
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                delete sr; 
+                std::cout<<"\n\n";
+            }else if(choice==1){
+                std::cout<<Color::BG_YELLOW<<"Bubble Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->bubble_visu();
+                std::cout<<"\n\n";
+                delete sr;
+            }else if(choice==2){
+                std::cout<<Color::BG_YELLOW<<"Insertion Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->insertion_sort();
+                std::cout<<"Sorted : ";
+                int n = tmp.len();
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==3){
+                std::cout<<Color::BG_YELLOW<<"Insertion Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->insertion_visu();
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==4){
+                std::cout<<Color::BG_YELLOW<<"Selection Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->selection_sort();
+                std::cout<<"Sorted : ";
+                int n = tmp.len();
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==5){
+                std::cout<<Color::BG_YELLOW<<"Selection Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->selection_visu();
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==6){
+                std::cout<<Color::BG_YELLOW<<"Quick Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                int n = tmp.len();
+                sr->quick_sort(0,n); 
+                std::cout<<"Sorted : ";
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==7){
+                std::cout<<Color::BG_YELLOW<<"Quick Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                sr->quick_visu();
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==8){
+                std::cout<<Color::BG_YELLOW<<"Merge Sorting"<<Color::RESET<<"\n\n";
+                MyArray tmp(arr);
+                SortArray *sr = new SortArray(tmp);
+                int n = tmp.len();
+                sr->merge_sort(); 
+                std::cout<<"Sorted : ";
+                for(int i=0; i<n; i++){
+                    std::cout<<Color::BCYAN<<tmp.get_el(i)<<" "<<Color::RESET;
+                }
+                delete sr;
+                std::cout<<"\n\n";
+            }else if(choice==9){
+                std::cout<<"\n\n";
+                std::cout<<"\n\n";
+                Sleep(2000);
+                break;
+            }
+        }
+    }
+
+    void searchingOptions(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Linear Search\n";
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Linear Search Visualization\n";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Linear Search\n";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Linear Search Visualization\n";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+
+    void searchingmenubar(){
+        std::cout<<Color::BG_YELLOW<<"Array Searching"<<Color::RESET<<"\n\n";
+        while(1){
+            searchingOptions();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='1' && ch[0]<='5'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==1){
+                std::cout<<Color::BG_YELLOW<<"Linear Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray *ss = new SearchArray(arr);
+                int pos = ss->linear_search(target);
+                if(pos==-1){
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BRED<<"Value didn't Found!!"<<Color::RESET;
+                    std::cout<<"\n\n";
+                }else{
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BGREEN<<"Value found at position "<<pos<<"."<<Color::RESET;
+                    std::cout<<"\n\n";
+                }
+                delete ss;
+            }else if(choice==2){
+                std::cout<<Color::BG_YELLOW<<"Linear Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray *ss = new SearchArray(arr);
+                ss->linear_visu(target);
+                delete ss;
+            }else if(choice==3){
+                std::cout<<Color::BG_YELLOW<<"Binary Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray *ss = new SearchArray(arr);
+                int pos = ss->binary_search(target);
+                if(pos==-1){
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BRED<<"Value didn't Found!!"<<Color::RESET;
+                    std::cout<<"\n\n";
+                }else{
+                    std::cout<<"\n\n";
+                    std::cout<<Color::BGREEN<<"Value found at position "<<pos<<"."<<Color::RESET;
+                    std::cout<<"\n\n";
+                }
+                delete ss;
+            }else if(choice==4){
+                std::cout<<Color::BG_YELLOW<<"Binary Search"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to search: ";
+                int target;
+                std::cin>>target;
+                SearchArray *ss = new SearchArray(arr);
+                ss->binary_visu(target);
+                delete ss;
+            }else if(choice==5){
+                std::cout<<"\n\n";
+                std::cout<<"\n\n";
+                Sleep(2000);
+                break;
+            }
+        }
+    }
+
+
+    void menubar(){
+        while(1){
+            arrayOptions();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==0){
+                std::cout<<Color::BG_YELLOW<<"Value Insertion at Last"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to insert: ";
+                int val;
+                std::cin>>val;
+                arr.insert_at_last(val);
+            }else if(choice==1){
+                std::cout<<Color::BG_YELLOW<<"Value Insertion at First"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to insert: ";
+                int val;
+                std::cin>>val;
+                arr.insert_at_first(val);
+            }else if(choice==2){
+                std::cout<<Color::BG_YELLOW<<"Value Insertion at Specific Position"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter value to insert: ";
+                int val;
+                std::cin>>val;
+                std::cout<<"Enter Target: ";
+                int target;
+                std::cin>>target;
+                arr.insert_mid(val,target);
+            }else if(choice==3){
+                std::cout<<Color::BG_YELLOW<<"Value Deletion from First"<<Color::RESET<<"\n\n";
+                arr.del_at_first();
+            }else if(choice==4){
+                std::cout<<Color::BG_YELLOW<<"Value Deletion from Last"<<Color::RESET<<"\n\n";
+                arr.del_at_last();
+            }else if(choice==5){
+                std::cout<<Color::BG_YELLOW<<"Value Deletion from Specific Position"<<Color::RESET<<"\n\n";
+                std::cout<<"Enter Position: ";
+                int pos;
+                std::cin>>pos;
+                arr.del_mid(pos);
+            }else if(choice==6){
+                std::cout<<Color::BG_YELLOW<<"Array Visualization"<<Color::RESET<<"\n\n";
+                VisuArray *vv = new VisuArray(arr);
+                vv->show();
+                delete vv;
+            }else if(choice==7){
+                searchingmenubar();
+            }else if(choice==8){
+                sortingMenubar();
+            }else if(choice==9){
+                std::cout<<"\n\n";
+                std::cout<<Color::BG_RED<<"Exiting Array...."<<Color::RESET;
+                std::cout<<"\n\n";
+                Sleep(2000);
+                break;
+            }
+        }
+    }
+
 
 };

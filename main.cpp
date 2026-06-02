@@ -157,9 +157,9 @@ public:
 
     void title(){
         std::cout<<Color::BG_YELLOW<<"======================"<<Color::RESET<<std::endl;
-        std::cout<<Color::BG_YELLOW<<"|"<<std::endl;
+        std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET;
         std::cout<<Color::BCYAN<<"   DS Visualizer    "<<Color::RESET;
-        std::cout<<Color::BG_YELLOW<<"|"<<std::endl;
+        std::cout<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
         std::cout<<Color::BG_YELLOW<<"======================"<<Color::RESET<<std::endl;
     }
     void about(){
@@ -238,8 +238,8 @@ public:
                 std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"   Array Visualizer   "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
-                MyArray arr;
-                arr.menubar();
+                MenuEngine m;
+                m.menubar();
             }else if(choice==2){
                 std::cout<<"\n\n";
                 std::cout<<Color::BG_YELLOW<<"========================"<<Color::RESET<<std::endl;
@@ -298,7 +298,9 @@ public:
                 b.menubar();
             }else if(choice==9){
                 std::cout<<"\n\n";
-
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"|"<<Color::BCYAN<<"        Heap Visualizer        "<<Color::BG_YELLOW<<"|"<<Color::RESET<<std::endl;
+                std::cout<<Color::BG_YELLOW<<"========================================"<<Color::RESET<<std::endl;
                 std::cout<<"\n\n";
                 Heaap<int> h;
                 h.menubar();
@@ -343,6 +345,7 @@ public:
 };
 
 int main(){
-    
+    UserEngine u;
+    u.menubar();
     return 0;
 }
