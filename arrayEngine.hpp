@@ -28,6 +28,9 @@ public:
         }
         data[size] = val;
         size++;
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"Successfully Inserted."<<Color::RESET;
+        std::cout<<"\n\n";
     }
     void insert_at_first(int val){
         if(size==0){
@@ -46,6 +49,9 @@ public:
         for(int i=0; i<size; i++){
             data[i] = temp[i];
         }
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"Successfully Inserted."<<Color::RESET;
+        std::cout<<"\n\n";
     }
 
     void insert_mid(int val, int target){
@@ -59,6 +65,9 @@ public:
         }
         data[i] = val;
         size++;
+        std::cout<<"\n\n";
+        std::cout<<Color::BGREEN<<"Successfully Inserted."<<Color::RESET;
+        std::cout<<"\n\n";
     }
 
     int len(){
@@ -73,8 +82,17 @@ public:
     }
 
     void del_at_first(){
+        if(size==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         if(size==1){
             size--;
+            std::cout<<"\n\n";
+            std::cout<<Color::BRED<<"Successfully Deleted."<<Color::RESET;
+            std::cout<<"\n\n";
             return;
         }
         int i=1;
@@ -82,18 +100,39 @@ public:
             data[i-1] = data[i];
         }
         size--;
+        std::cout<<"\n\n";
+        std::cout<<Color::BRED<<"Successfully Deleted."<<Color::RESET;
+        std::cout<<"\n\n";
     }
     void del_at_last(){
+        if(size==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         size--;
+        std::cout<<"\n\n";
+        std::cout<<Color::BRED<<"Successfully Deleted."<<Color::RESET;
+        std::cout<<"\n\n";
     }
 
     void del_mid(int target){
+        if(size==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         for(int i=0; i<size-1; i++){
             if(i>=target){
                 data[i] = data[i+1];
             }
         }
         size--;
+        std::cout<<"\n\n";
+        std::cout<<Color::BRED<<"Successfully Deleted."<<Color::RESET;
+        std::cout<<"\n\n";
     }
 
     int get_el(int i){
@@ -103,13 +142,129 @@ public:
     friend class VisuArray;
     friend class SortArray;
     
+    void arrayOptions(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<"Insert at Last ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Insert at First ";
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Insert at Specific Position \n";
+
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Delete from Last ";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Delete from First ";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"Delete from Specific Position \n";
+
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"Visualization ";
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"Searching ";
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<"Sorting \n";
+
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+    void sortingOptions(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[0]"<<Color::RESET;
+        std::cout<<"Bubble Sort ";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Bubble Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Insertion Sort ";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Insertion Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Selection Sort ";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<"Selection Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[6]"<<Color::RESET;
+        std::cout<<"Quick Sort ";
+        std::cout<<Color::BMAGENTA<<"[7]"<<Color::RESET;
+        std::cout<<"Quick Sort Visualization\n";
+
+        std::cout<<Color::BMAGENTA<<"[8]"<<Color::RESET;
+        std::cout<<"Merge Sort\n";
+
+        std::cout<<Color::BMAGENTA<<"[9]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+    void searchingOptions(){
+        std::cout<<"\n\n";
+        std::cout<<Color::BMAGENTA<<"[1]"<<Color::RESET;
+        std::cout<<"Linear Search\n";
+        std::cout<<Color::BMAGENTA<<"[2]"<<Color::RESET;
+        std::cout<<"Linear Search Visualization\n";
+        std::cout<<Color::BMAGENTA<<"[3]"<<Color::RESET;
+        std::cout<<"Linear Search\n";
+        std::cout<<Color::BMAGENTA<<"[4]"<<Color::RESET;
+        std::cout<<"Linear Search Visualization\n";
+        std::cout<<Color::BMAGENTA<<"[5]"<<Color::RESET;
+        std::cout<<Color::BRED<<" EXIT "<<Color::RESET;
+        std::cout<<"\n\n";
+    }
+
+
+    void menubar(){
+        while(1){
+            arrayOptions();
+            int choice; 
+            std::string ch;
+            while(true){
+                std::cout<<Color::BBLUE<<"Enter your choice: "<<Color::RESET;
+                std::cin>>ch;
+                if(ch.size()==1 && ch[0]>='0' && ch[0]<='9'){
+                    break;
+                }
+                std::cout<<"\n\n\n";
+                std::cout<<Color::BG_RED<<"Invalid Choice!! Try Again."<<Color::RESET<<"\n\n\n";
+            }
+
+            choice = std::stoi(ch);
+            std::cout<<"\n\n";
+
+            if(choice==0){
+
+            }else if(choice==1){
+
+            }else if(choice==2){
+                
+            }else if(choice==3){
+                
+            }else if(choice==4){
+                
+            }else if(choice==5){
+                
+            }else if(choice==6){
+                
+            }else if(choice==7){
+                
+            }else if(choice==8){
+                
+            }else if(choice==9){
+                
+            }
+        }
+    }
+
+
 };
 
 
 class VisuArray{
 private:
-    MyArray arr;
+    
 public:
+    MyArray arr;
     VisuArray(const MyArray &tmp): arr(tmp) {}
 
     std::string center(int num, int width){
