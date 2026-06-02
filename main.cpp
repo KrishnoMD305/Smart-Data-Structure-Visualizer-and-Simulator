@@ -266,6 +266,7 @@ public:
             h.menubar();
             menu(name);
         }else if(choice==10){
+            std::cout<<name<<", You are successfully signed out.\n\n";
             return;
         }
     }
