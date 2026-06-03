@@ -26,6 +26,9 @@ public:
         if(size==0){
             data[size] = val;
             size++;
+            std::cout<<"\n\n";
+            std::cout<<Color::BGREEN<<"Successfully Inserted."<<Color::RESET;
+            std::cout<<"\n\n";
             return;
         }
         data[size] = val;
@@ -171,6 +174,12 @@ public:
 
     void show(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         int num = 5*n - 2;
         int max_element = arr.data[0];
 
@@ -222,6 +231,12 @@ public:
         int length = arr.len();
 
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         int num = 5*n - 2;
         int max_element = arr.get_el(0);
 
@@ -293,6 +308,12 @@ public:
         int length = arr.len();
 
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         int num = 5*n - 2;
         int max_element = arr.get_el(0);
 
@@ -445,6 +466,12 @@ public:
 
     void bubble_visu(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         int num = 5*n - 2;
         int max_element = arr.get_el(0);
 
@@ -533,6 +560,12 @@ public:
 
     void bubble_sort(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         for(int i=0; i<n-1; i++){
             for(int j=0; j<n-i-1; j++){
                 if(arr.data[j] > arr.data[j+1]){
@@ -546,6 +579,12 @@ public:
 
     void insertion_sort(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         for(int i=1; i<n; i++){
             int key = arr.data[i];
             int j = i - 1;
@@ -561,6 +600,12 @@ public:
 
     void insertion_visu(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         int num = 5*n - 2;
         int max_element = arr.get_el(0);
 
@@ -679,6 +724,12 @@ public:
 
     void selection_visu(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         int num = 5*n - 2;
         int max_element = arr.get_el(0);
 
@@ -810,6 +861,12 @@ public:
 
     void selection_sort(){
         int n = arr.len();
+        if(n==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         for(int i=0; i<n-1; i++){
             int mini = i;
             for(int j=i+1; j<n; j++){
@@ -842,6 +899,12 @@ public:
 
 
     void quick_sort(int low, int high){
+        if(arr.len()==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         if(low < high){
             int piv = partition(low,high);
             quick_sort(low, piv-1);
@@ -1060,7 +1123,12 @@ public:
     }
 
     void quick_visu(){
-        
+        if(arr.len()==0){
+            std::cout<<"\n\n";
+            std::cout<<Color::BG_RED<<"Array is Empty.!"<<Color::RESET;
+            std::cout<<"\n\n";
+            return;
+        }
         MyArray sorted;
         for(int i=0; i<arr.len(); i++){
             sorted.insert_at_last(0);

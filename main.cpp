@@ -349,5 +349,8 @@ public:
 int main(){
     UserEngine u;
     u.menubar();
+    std::cout<<"\n\n";
+    std::cout<<Color::BGREEN<<"Thank you for using DS Visualizer."<<Color::RESET;
+    std::cout<<"\n\n";
     return 0;
 }
