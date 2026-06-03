@@ -1,14 +1,6 @@
 # 📊 Smart Data Structure Visualizer & Simulator
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Interface-Console-1C1C1C?style=for-the-badge&logo=gnometerminal&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Version-1.0-brightgreen?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge"/>
-</p>
-
-<p align="center">
   <b>An interactive, color-coded console application to visualize and simulate core data structures — built entirely in C++.</b>
 </p>
 
