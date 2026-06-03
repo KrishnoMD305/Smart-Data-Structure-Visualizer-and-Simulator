@@ -180,11 +180,6 @@ Khulna University of Engineering & Technology (KUET)
 
 ---
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 ## 🙏 Acknowledgements
 
@@ -193,4 +188,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">© 2026 DS Visualizer — Made with ❤️ and C++</p>
+<p align="center">© 2026 DS Visualizer </p>
